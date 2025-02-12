@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ProductDAOImpl implements ProductDAO {
 
     @Override
-    public ArrayList<Product> getAllProducts() throws SQLException, ClassNotFoundException {
+    public ArrayList<Product> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Product");
         ArrayList<Product> productDTOS = new ArrayList<>();
         while (rst.next()) {
@@ -26,7 +26,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public String getNextProductId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select pro_id  from Product order by pro_id  desc limit 1");
 
         if (rst.next()) {
@@ -65,7 +65,7 @@ public class ProductDAOImpl implements ProductDAO {
         );    }
 
     @Override
-    public ArrayList<String> getAllProductIds() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select pro_id from Product");
         ArrayList<String> productIds = new ArrayList<>();
         while (rst.next()) {
@@ -75,17 +75,14 @@ public class ProductDAOImpl implements ProductDAO {
         return productIds;    }
 
     @Override
-    public ProductDTO findById(String selectedProductId) throws SQLException, ClassNotFoundException {
+    public Product search(String selectedProductId) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Product where pro_id=?", selectedProductId);
 
-        if (rst.next()) {
-            return new ProductDTO(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getDouble(3),
-                    rst.getString(4),
-                    rst.getString(5)
-            );
+        rst.next();
+        return new Product( rst.getString("product id"),
+                rst.getString("name"),
+                rst.getDouble("price"),
+                rst.getString("inventoryId"),
+                rst.getString("quantity"));
         }
-        return null;    }
 }

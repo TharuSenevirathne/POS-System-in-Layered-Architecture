@@ -137,7 +137,7 @@ public class Discount implements Initializable {
     }
 
     private void loadNextDiscountId() throws SQLException,ClassNotFoundException {
-        String nextDiscountId = discountBO.getNextDiscountId();
+        String nextDiscountId = discountBO.generateDiscountId();
         Disid.setText(nextDiscountId);
     }
 

@@ -126,7 +126,7 @@ public class Warehouse implements Initializable {
     }
 
     private void loadNextWarehouseId() throws SQLException ,ClassNotFoundException{
-        String nextWarehouseId = warehouseBO.getNextWarehouseId();
+        String nextWarehouseId = warehouseBO.generateWarehouseId();
         warehouseid.setText(nextWarehouseId);
     }
 

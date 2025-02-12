@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface DeliveryBO extends SuperBO {
-    String getNextDeliveryId() throws SQLException, ClassNotFoundException;
+    String generateDeliveryId() throws SQLException, ClassNotFoundException;
     ArrayList<DeliveryDTO> getAllDeliveries() throws SQLException, ClassNotFoundException;
     boolean deleteDelivery(String deliveryId) throws SQLException, ClassNotFoundException;
-    boolean updateDelivery(DeliveryDTO deliveryDTO) throws SQLException, ClassNotFoundException;
-    boolean saveDelivery(DeliveryDTO deliveryDTO) throws SQLException, ClassNotFoundException;
+    boolean updateDelivery(DeliveryDTO dto) throws SQLException, ClassNotFoundException;
+    boolean saveDelivery(DeliveryDTO dto) throws SQLException, ClassNotFoundException;
 }

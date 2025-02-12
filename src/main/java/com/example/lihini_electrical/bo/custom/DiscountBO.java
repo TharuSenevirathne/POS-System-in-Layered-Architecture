@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface DiscountBO extends SuperBO {
     ArrayList<DiscountDTO> getAllDiscounts() throws SQLException, ClassNotFoundException;
-    String getNextDiscountId() throws SQLException, ClassNotFoundException;
+    String generateDiscountId() throws SQLException, ClassNotFoundException;
     boolean deleteDiscount(String discountId) throws SQLException, ClassNotFoundException;
     boolean saveDiscount(DiscountDTO discountDTO) throws SQLException, ClassNotFoundException;
     boolean updateDiscount(DiscountDTO discountDTO) throws SQLException, ClassNotFoundException;

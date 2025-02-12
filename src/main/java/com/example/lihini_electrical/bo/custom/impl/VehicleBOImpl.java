@@ -23,15 +23,16 @@ public class VehicleBOImpl implements VehicleBO {
     }
 
     @Override
-    public VehicleDTO findById(String selectedVehicleId) throws SQLException, ClassNotFoundException {
-        String vehicleId = selectedVehicleId;
-        return vehicleDAO.findById(vehicleId);
+    public VehicleDTO searchVehicle(String selectedVehicleId) throws SQLException, ClassNotFoundException {
+        Vehicle vehicle = vehicleDAO.search(selectedVehicleId);
+        VehicleDTO vehicleDTO = new VehicleDTO(vehicle.getVehicleId(),vehicle.getType());
+        return vehicleDTO;
     }
 
     @Override
     public ArrayList<VehicleDTO> getAllVehicles() throws SQLException, ClassNotFoundException {
         ArrayList<VehicleDTO> vehicleDTOArrayList = new ArrayList<>();
-        ArrayList<Vehicle> vehicleDTOS = vehicleDAO.getAllVehicles();
+        ArrayList<Vehicle> vehicleDTOS = vehicleDAO.getAll();
         ObservableList<VehicleTM> vehicleTMS = FXCollections.observableArrayList();
 
         for (Vehicle vehicleDTO : vehicleDTOS) {
@@ -42,8 +43,8 @@ public class VehicleBOImpl implements VehicleBO {
     }
 
     @Override
-    public String getNextVehicleId() throws SQLException, ClassNotFoundException {
-        String nextVehicleId = vehicleDAO.getNextVehicleId();
+    public String generateVehicleId() throws SQLException, ClassNotFoundException {
+        String nextVehicleId = vehicleDAO.generateId();
         return nextVehicleId;
     }
 

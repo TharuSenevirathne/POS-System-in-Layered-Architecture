@@ -126,7 +126,7 @@ public class Inventory implements Initializable {
     }
 
     private void loadNextInventoryId() throws SQLException ,ClassNotFoundException {
-        String nextInventorytId = inventoryBO.getNextInventoryId();
+        String nextInventorytId = inventoryBO.generateInventoryId();
         Inventoryid.setText(nextInventorytId);
     }
 

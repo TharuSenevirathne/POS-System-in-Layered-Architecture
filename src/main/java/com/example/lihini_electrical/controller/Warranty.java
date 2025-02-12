@@ -140,7 +140,7 @@ public class Warranty implements Initializable {
     }
 
     private void loadNextWarrantyId() throws SQLException,ClassNotFoundException {
-        String nextWarrantyId = warrantyBO.getNextWarrantyId();
+        String nextWarrantyId = warrantyBO.generateWarrantyId();
         Warrantyid.setText(nextWarrantyId);
     }
 

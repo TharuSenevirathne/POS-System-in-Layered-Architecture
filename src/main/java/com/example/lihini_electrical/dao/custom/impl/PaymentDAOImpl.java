@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PaymentDAOImpl implements PaymentDAO {
     @Override
-    public ArrayList<Payment> getAllPayments() throws SQLException, ClassNotFoundException {
+    public ArrayList<Payment> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Payment");
         ArrayList<Payment> paymentDTOS = new ArrayList<>();
 
@@ -24,7 +24,7 @@ public class PaymentDAOImpl implements PaymentDAO {
     }
 
     @Override
-    public String getNextPaymentId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select pay_id  from Payment order by pay_id  desc limit 1");
 
         if (rst.next()) {
@@ -58,4 +58,14 @@ public class PaymentDAOImpl implements PaymentDAO {
                 payment.getOrderItemName(),
                 payment.getDate()
         );    }
+
+    @Override
+    public Payment search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
 }

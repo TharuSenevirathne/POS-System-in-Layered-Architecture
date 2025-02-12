@@ -18,7 +18,7 @@ public class WarrantyBOImpl implements WarrantyBO {
     @Override
     public ArrayList<WarrantyDTO> getAllWarranties() throws SQLException, ClassNotFoundException {
         ArrayList<WarrantyDTO> warrantyDTOArrayList = new ArrayList<>();
-        ArrayList<Warranty> warrantyDTOS = warrantyDAO.getAllWarranties();
+        ArrayList<Warranty> warrantyDTOS = warrantyDAO.getAll();
 
         ObservableList<WarrantyTM> warrantyTMS = FXCollections.observableArrayList();
 
@@ -32,8 +32,8 @@ public class WarrantyBOImpl implements WarrantyBO {
     }
 
     @Override
-    public String getNextWarrantyId() throws SQLException, ClassNotFoundException {
-        String nextWarrantyId = warrantyDAO.getNextWarrantyId();
+    public String generateWarrantyId() throws SQLException, ClassNotFoundException {
+        String nextWarrantyId = warrantyDAO.generateId();
         return nextWarrantyId;
     }
 

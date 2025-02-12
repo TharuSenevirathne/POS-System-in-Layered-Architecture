@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class VehicleDAOImpl implements VehicleDAO {
     @Override
-    public ArrayList<Vehicle> getAllVehicles() throws SQLException, ClassNotFoundException {
+    public ArrayList<Vehicle> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Vehicle");
 
         ArrayList<Vehicle> vehicleDTOS = new ArrayList<>();
@@ -23,7 +23,7 @@ public class VehicleDAOImpl implements VehicleDAO {
         return vehicleDTOS;    }
 
     @Override
-    public String getNextVehicleId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select vehi_id from Vehicle order by vehi_id desc limit 1");
 
         if (rst.next()) {
@@ -57,7 +57,7 @@ public class VehicleDAOImpl implements VehicleDAO {
     }
 
     @Override
-    public ArrayList<String> getAllVehicleIds() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select vehi_id from Vehicle");
 
         ArrayList<String> vehicleIds = new ArrayList<>();
@@ -68,14 +68,10 @@ public class VehicleDAOImpl implements VehicleDAO {
         return vehicleIds;    }
 
     @Override
-    public VehicleDTO findById(String selectedVehicleId) throws SQLException, ClassNotFoundException {
+    public Vehicle search(String selectedVehicleId) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Vehicle where vehi_id=?", selectedVehicleId);
+        rst.next();
+        return new Vehicle(selectedVehicleId, rst.getString("type"));
 
-        if (rst.next()) {
-            return new VehicleDTO(
-                    rst.getString(1),
-                    rst.getString(2)
-            );
-        }
-        return null;    }
+    }
 }

@@ -151,7 +151,7 @@ public class Employee implements Initializable {
     }
 
     private void loadNextEmployeeId() throws SQLException, ClassNotFoundException {
-        String nextEmployeeId = employeeBO.getNextEmployeeId();
+        String nextEmployeeId = employeeBO.generateEmployeeId();
         empidLabel.setText(nextEmployeeId);
     }
 

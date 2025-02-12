@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface SupplierBO extends SuperBO {
     ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException;
-    String getNextSupplierId() throws SQLException, ClassNotFoundException;
+    String generateSupplierId() throws SQLException, ClassNotFoundException;
     boolean deleteSupplier(String supplierId) throws SQLException, ClassNotFoundException;
     boolean saveSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException;
     boolean updateSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException;

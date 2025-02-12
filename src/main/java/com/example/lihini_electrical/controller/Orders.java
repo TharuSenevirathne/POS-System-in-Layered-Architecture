@@ -167,7 +167,7 @@ public class Orders implements Initializable {
     }
 
     private void refreshPage() throws SQLException,ClassNotFoundException {
-        orderid.setText(ordersBO.getNextOrderId());
+        orderid.setText(ordersBO.generateOrderId());
         DateTextfield.setValue(LocalDate.parse(LocalDate.now().toString()));
 
         loadCustomerIds();
@@ -193,7 +193,7 @@ public class Orders implements Initializable {
     }
 
     private void loadCustomerIds() throws SQLException,ClassNotFoundException {
-        ArrayList<String> customerIds = customerBO.getAllCustomerIds();
+        ArrayList<String> customerIds = customerBO.getAllIds();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(customerIds);
         CustomeridCombobox.setItems(observableList);
@@ -202,7 +202,7 @@ public class Orders implements Initializable {
     @FXML
     void CustomeridComboboxOnAction(ActionEvent event) throws SQLException,ClassNotFoundException {
         String selectedCustomerId = CustomeridCombobox.getSelectionModel().getSelectedItem();
-        CustomerDTO customerDTO = customerBO.findById(selectedCustomerId);
+        CustomerDTO customerDTO = customerBO.searchCustomer(selectedCustomerId);
 
         if (customerDTO != null) {
             CustomerName.setText(customerDTO.getName());

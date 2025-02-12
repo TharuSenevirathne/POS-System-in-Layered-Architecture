@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface WarrantyBO extends SuperBO {
     ArrayList<WarrantyDTO> getAllWarranties() throws SQLException, ClassNotFoundException;
-    String getNextWarrantyId() throws SQLException, ClassNotFoundException;
+    String generateWarrantyId() throws SQLException, ClassNotFoundException;
     boolean deleteWarranty(String warrantyId) throws SQLException, ClassNotFoundException;
     boolean saveWarranty(WarrantyDTO warrantyDTO) throws SQLException, ClassNotFoundException;
     boolean updateWarranty(WarrantyDTO warrantyDTO) throws SQLException, ClassNotFoundException;

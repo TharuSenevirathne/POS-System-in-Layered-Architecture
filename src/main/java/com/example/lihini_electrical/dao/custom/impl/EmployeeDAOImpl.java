@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
+
     @Override
-    public ArrayList<Employee> getAllEmployees() throws SQLException, ClassNotFoundException {
+    public ArrayList<Employee> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Employee");
 
         ArrayList<Employee> employeeDTOS = new ArrayList<>();
@@ -23,7 +24,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select emp_id  from Employee order by emp_id  desc limit 1");
 
         if (rst.next()) {
@@ -64,4 +65,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         );
     }
 
+    @Override
+    public Employee search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
 }

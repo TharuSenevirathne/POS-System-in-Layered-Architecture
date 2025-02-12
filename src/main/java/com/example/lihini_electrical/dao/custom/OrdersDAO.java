@@ -8,8 +8,4 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface OrdersDAO extends CrudDAO<Orders> {
-    ArrayList<String> getAllOrderIds() throws SQLException, ClassNotFoundException;
-    OrdersDTO findById(String selectedOrderId) throws SQLException, ClassNotFoundException;
-    String getNextOrderId() throws SQLException, ClassNotFoundException;
-    boolean save(Orders orders);
 }

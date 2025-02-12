@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class WarrantyDAOImpl implements WarrantyDAO {
 
     @Override
-    public ArrayList<Warranty> getAllWarranties() throws SQLException, ClassNotFoundException {
+    public ArrayList<Warranty> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Warranty");
 
         ArrayList<Warranty> warrantyDTOS = new ArrayList<>();
@@ -26,7 +26,7 @@ public class WarrantyDAOImpl implements WarrantyDAO {
     }
 
     @Override
-    public String getNextWarrantyId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select war_id  from Warranty order by war_id  desc limit 1");
 
         if (rst.next()) {
@@ -62,5 +62,15 @@ public class WarrantyDAOImpl implements WarrantyDAO {
                 warrantyDTO.getWarrantyPeriodTime(),
                 warrantyDTO.getWarrantyStartDate()
         );
+    }
+
+    @Override
+    public Warranty search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
     }
 }

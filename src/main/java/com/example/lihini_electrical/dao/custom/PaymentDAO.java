@@ -7,9 +7,5 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface PaymentDAO extends CrudDAO<Payment> {
-    ArrayList<Payment> getAllPayments() throws SQLException, ClassNotFoundException;
-    String getNextPaymentId() throws SQLException, ClassNotFoundException;
-    boolean delete(String paymentId) throws SQLException;
-    boolean save(Payment payment) throws SQLException;
-    boolean update(Payment payment) throws SQLException;
+
 }

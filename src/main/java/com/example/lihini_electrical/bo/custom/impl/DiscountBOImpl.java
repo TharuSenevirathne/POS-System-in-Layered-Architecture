@@ -18,7 +18,7 @@ public class DiscountBOImpl implements DiscountBO {
     @Override
     public ArrayList<DiscountDTO> getAllDiscounts() throws SQLException, ClassNotFoundException {
         ArrayList<DiscountDTO> discountDTOArrayList = new ArrayList<>();
-        ArrayList<Discount> discounts = discountDAO.getAllDiscounts();
+        ArrayList<Discount> discounts = discountDAO.getAll();
         ObservableList<DiscountTM> discountTMS = FXCollections.observableArrayList();
         for (Discount discount : discounts) {
             discountDTOArrayList.add(new DiscountDTO(discount.getDiscountid(),
@@ -28,8 +28,8 @@ public class DiscountBOImpl implements DiscountBO {
     }
 
     @Override
-    public String getNextDiscountId() throws SQLException, ClassNotFoundException {
-        String nextDiscountId = discountDAO.getNextDiscountId();
+    public String generateDiscountId() throws SQLException, ClassNotFoundException {
+        String nextDiscountId = discountDAO.generateId();
         return nextDiscountId;
     }
 

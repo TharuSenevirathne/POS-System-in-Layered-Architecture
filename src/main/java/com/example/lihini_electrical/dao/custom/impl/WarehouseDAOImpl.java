@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class WarehouseDAOImpl implements WarehouseDAO {
     @Override
-    public ArrayList<Warehouse> getAllWarehouses() throws SQLException, ClassNotFoundException {
+    public ArrayList<Warehouse> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Warehouse");
 
         ArrayList<Warehouse> warehouseDTOS = new ArrayList<>();
@@ -26,7 +26,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
         return warehouseDTOS;    }
 
     @Override
-    public String getNextWarehouseId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select ware_id  from Warehouse order by ware_id  desc limit 1");
 
         if (rst.next()) {
@@ -59,4 +59,14 @@ public class WarehouseDAOImpl implements WarehouseDAO {
                 warehouse.getName(),
                 warehouse.getLocation()
         );    }
+
+    @Override
+    public Warehouse search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
 }

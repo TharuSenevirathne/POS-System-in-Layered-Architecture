@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DeliveryDAOImpl implements DeliveryDAO {
     @Override
-    public String getNextDeliveryId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select deli_id  from Delivery order by deli_id  desc limit 1");
 
         if (rst.next()) {
@@ -25,42 +25,52 @@ public class DeliveryDAOImpl implements DeliveryDAO {
     }
 
     @Override
-    public ArrayList<Delivery> getAllDeliveries() throws SQLException, ClassNotFoundException {
+    public ArrayList<Delivery> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Delivery");
         ArrayList<Delivery> deliveries = new ArrayList<>();
+
         while (rst.next()) {
-            deliveries.add(new Delivery(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getDate(3),
-                    rst.getString(4)));
+            Delivery entity = new Delivery(rst.getString("delivery id"),
+                    rst.getString("address"),
+                    rst.getDate("date"),
+                    rst.getString("vehicle id"));
+            deliveries.add(entity);
         }
         return deliveries;
     }
 
     @Override
     public boolean delete(String deliveryId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Delivery where deli_id=?", deliveryId);
+         return SQLUtil.execute("delete from Delivery where deli_id=?", deliveryId);
     }
 
     @Override
-    public boolean save(Delivery delivery) throws SQLException, ClassNotFoundException {
+    public boolean save(Delivery entity) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("insert into Delivery values (?,?,?,?)",
-                delivery.getDeliveryId(),
-                delivery.getAddress(),
-                delivery.getDate(),
-                delivery.getVehicleId()
+                entity.getDeliveryId(),
+                entity.getAddress(),
+                entity.getDate(),
+                entity.getVehicleId()
         );
     }
 
     @Override
-    public boolean update(Delivery delivery) throws SQLException, ClassNotFoundException {
+    public boolean update(Delivery entity) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("update Delivery set deli_address =? ,deli_date=?,vehi_id =? where deli_id =?",
-                delivery.getAddress(),
-                delivery.getDate(),
-                delivery.getVehicleId(),
-                delivery.getDeliveryId()
+                entity.getAddress(),
+                entity.getDate(),
+                entity.getVehicleId(),
+                entity.getDeliveryId()
         );
     }
 
+    @Override
+    public Delivery search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
 }

@@ -18,7 +18,7 @@ public class PaymentBOImpl implements PaymentBO {
     @Override
     public ArrayList<PaymentDTO> getAllPayments() throws SQLException, ClassNotFoundException {
         ArrayList<PaymentDTO> PaymentDTOArrayList = new ArrayList<>();
-        ArrayList<Payment> paymentDTOS = paymentDAO.getAllPayments();
+        ArrayList<Payment> paymentDTOS = paymentDAO.getAll();
 
         ObservableList<PaymentTM> paymentTMS = FXCollections.observableArrayList();
 
@@ -32,8 +32,8 @@ public class PaymentBOImpl implements PaymentBO {
     }
 
     @Override
-    public String getNextPaymentId() throws SQLException, ClassNotFoundException {
-        String nextPaymentId = paymentDAO.getNextPaymentId();
+    public String generatePaymentId() throws SQLException, ClassNotFoundException {
+        String nextPaymentId = paymentDAO.generateId();
         return nextPaymentId;
     }
 

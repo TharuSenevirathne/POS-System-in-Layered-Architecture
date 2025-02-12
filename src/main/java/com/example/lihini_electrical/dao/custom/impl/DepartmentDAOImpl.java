@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class DepartmentDAOImpl implements DepartmentDAO {
     @Override
-    public ArrayList<Department> getAllDepartments() throws SQLException, ClassNotFoundException {
+    public ArrayList<Department> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Department");
         ArrayList<Department> departments = new ArrayList<>();
         while (rst.next()) {
@@ -20,7 +20,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public String getNextDepartmentId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select dep_id   from Department order by dep_id   desc limit 1");
 
         if (rst.next()) {
@@ -54,5 +54,15 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 department.getName(),
                 department.getEmployeeid()
         );
+    }
+
+    @Override
+    public Department search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
     }
 }

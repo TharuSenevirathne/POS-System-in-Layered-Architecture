@@ -159,7 +159,7 @@ public class Product implements Initializable {
     }
 
     private void loadNextProductId() throws SQLException ,ClassNotFoundException{
-        String nextProductId = productBO.getNextProductId();
+        String nextProductId = productBO.generateProductId();
         proid.setText(nextProductId);
     }
 

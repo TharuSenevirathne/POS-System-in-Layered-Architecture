@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class DiscountDAOImpl implements DiscountDAO {
     @Override
-    public ArrayList<Discount> getAllDiscounts() throws SQLException, ClassNotFoundException {
+    public ArrayList<Discount> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Discount");
 
         ArrayList<Discount> discounts = new ArrayList<>();
@@ -23,7 +23,7 @@ public class DiscountDAOImpl implements DiscountDAO {
     }
 
     @Override
-    public String getNextDiscountId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select dis_id   from Discount order by dis_id   desc limit 1");
 
         if (rst.next()) {
@@ -58,4 +58,15 @@ public class DiscountDAOImpl implements DiscountDAO {
                 discount.getOrderid()
         );
     }
+
+    @Override
+    public Discount search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 }

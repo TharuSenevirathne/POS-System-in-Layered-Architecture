@@ -114,7 +114,7 @@ public class Vehicle implements Initializable {
     }
 
     private void loadNextVehicleId() throws SQLException ,ClassNotFoundException{
-        String nextVehicleId = vehicleBO.getNextVehicleId();
+        String nextVehicleId = vehicleBO.generateVehicleId();
         Vehiid.setText(nextVehicleId);
     }
 

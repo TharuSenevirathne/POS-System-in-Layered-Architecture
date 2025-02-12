@@ -139,7 +139,7 @@ public class Supplier implements Initializable {
     }
 
     private void loadNextSupplierId() throws SQLException ,ClassNotFoundException{
-        String nextSupplierId = supplierBO.getNextSupplierId();
+        String nextSupplierId = supplierBO.generateSupplierId();
         supplierid.setText(nextSupplierId);
     }
 

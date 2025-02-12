@@ -12,33 +12,22 @@ import java.util.ArrayList;
 public class OrdersDAOImpl implements OrdersDAO {
 
     @Override
-    public ArrayList<String> getAllOrderIds() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select ord_id from Orders");
-
-        ArrayList<String> orderIds = new ArrayList<>();
-
-        while (rst.next()) {
-            orderIds.add(rst.getString(1));
-        }
-        return orderIds;
-    }
-
-    @Override
-    public OrdersDTO findById(String selectedOrderId) throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select * from Orders where ord_id=?", selectedOrderId);
-
-        if (rst.next()) {
-            return new OrdersDTO(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getDate(3)
-            );
-        }
+    public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public String getNextOrderId() throws SQLException, ClassNotFoundException {
+    public Orders search(String selectedOrderId) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select ord_id  from Orders  order by ord_id  desc limit 1");
 
         if (rst.next()) {
@@ -57,5 +46,15 @@ public class OrdersDAOImpl implements OrdersDAO {
                 orders.getCustomerId(),
                 orders. getDate()
         );
+    }
+
+    @Override
+    public boolean update(Orders dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
     }
 }

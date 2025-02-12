@@ -150,7 +150,7 @@ public class Department implements Initializable {
     }
 
     private void loadNextDepartmentId() throws SQLException , ClassNotFoundException{
-        String nextDepartmentId = departmentBO.getNextDepartmentId();
+        String nextDepartmentId = departmentBO.generateDeliveryID();
         depid.setText(nextDepartmentId);
     }
 

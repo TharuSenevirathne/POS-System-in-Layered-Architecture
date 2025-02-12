@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class SupplierDAOImpl implements SupplierDAO {
     @Override
-    public ArrayList<Supplier> getAllSuppliers() throws SQLException, ClassNotFoundException {
+    public ArrayList<Supplier> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Supplier");
         ArrayList<Supplier> supplier = new ArrayList<>();
         while (rst.next()) {
@@ -23,7 +23,7 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
     @Override
-    public String getNextSupplierId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select sup_id  from Supplier order by sup_id  desc limit 1");
 
         if (rst.next()) {
@@ -58,4 +58,24 @@ public class SupplierDAOImpl implements SupplierDAO {
                 supplier.getBrand(),
                 supplier.getPhoneNo()
         );    }
+
+    @Override
+    public Supplier search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Supplier> getAllSuppliers() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public String getNextSupplierId() throws SQLException, ClassNotFoundException {
+        return "";
+    }
 }

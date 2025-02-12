@@ -176,27 +176,29 @@ public class Customer implements Initializable {
         EmployeeidComboBox.getSelectionModel().clearSelection();
     }
 
-    private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<CustomerDTO> customerDTOS = customerbo.getAllCustomers();
+    private void loadTableData() {
+       CustomerTable.getItems().clear();
+        try {
+            ArrayList<CustomerDTO> customerDTOS = customerbo.getAllCustomers();
+            ObservableList<CustomerTM> customerTMS = FXCollections.observableArrayList();
 
-        ObservableList<CustomerTM> customerTMS = FXCollections.observableArrayList();
-
-        for (CustomerDTO customerDTO : customerDTOS) {
-            CustomerTM customerTM = new CustomerTM(
-                    customerDTO.getCustomerId(),
-                    customerDTO.getName(),
-                    customerDTO.getAddress(),
-                    customerDTO.getPhoneNo(),
-                    customerDTO.getEmail(),
-                    customerDTO.getType(),
-                    customerDTO.getEmployeeId()
-            );
-            customerTMS.add(customerTM);
+            for (CustomerDTO customerDTO : customerDTOS) {
+                CustomerTable.getItems().add(new CustomerTM(customerDTO.getCustomerId(),
+                        customerDTO.getName(),
+                        customerDTO.getAddress(),
+                        customerDTO.getPhoneNo(),
+                        customerDTO.getEmail(),
+                        customerDTO.getType(),
+                        customerDTO.getEmployeeId()));
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }catch (ClassNotFoundException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-        CustomerTable.setItems(customerTMS);
     }
 
-    private void loadEmployeeIds() throws SQLException {
+    private void loadEmployeeIds() throws SQLException, ClassNotFoundException {
         ArrayList<String> employeeIds = employeeBO.getAllEmployeeIds();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(employeeIds);
@@ -204,7 +206,7 @@ public class Customer implements Initializable {
     }
 
     private void loadNextCustomerId() throws SQLException, ClassNotFoundException {
-        String nextCustomerId = customerbo.getNextCustomerId();
+        String nextCustomerId = customerbo.generateCustomerId();
         custidLabel.setText(nextCustomerId);
     }
 
@@ -395,8 +397,8 @@ public class Customer implements Initializable {
                     type,
                     employeeId
             );
-
-            boolean isUpdate = customerbo.updateCustomer(customerDTO);
+            CustomerDTO dto = new CustomerDTO(customerId,name,address,phoneNo,email,type,employeeId);
+            boolean isUpdate = customerbo.updateCustomer(dto);
 
             if (isUpdate) {
                 refreshPage();
@@ -420,9 +422,9 @@ public class Customer implements Initializable {
     }
 
     @FXML
-    void EmployeeidOnAction(ActionEvent event) throws SQLException {
+    void EmployeeidOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String selectedEmployeeId = EmployeeidComboBox.getSelectionModel().getSelectedItem();
-        EmployeeDTO employeeDTO = employeeBO.findById(selectedEmployeeId);
+        EmployeeDTO employeeDTO = employeeBO.searchEmployee(selectedEmployeeId);
 
         if (employeeDTO != null) {
             System.out.println(" ");

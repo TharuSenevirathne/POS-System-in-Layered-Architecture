@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class InventoryDAOImpl implements InventoryDAO {
     @Override
-    public ArrayList<Inventory> getAllInventories() throws SQLException, ClassNotFoundException {
+    public ArrayList<Inventory> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Inventory");
         ArrayList<Inventory> inventoryDTOS = new ArrayList<>();
         while (rst.next()) {
@@ -22,7 +22,7 @@ public class InventoryDAOImpl implements InventoryDAO {
     }
 
     @Override
-    public String getNextInventoryId() throws SQLException, ClassNotFoundException {
+    public String generateId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select in_id  from Inventory order by in_id  desc limit 1");
 
         if (rst.next()) {
@@ -57,4 +57,15 @@ public class InventoryDAOImpl implements InventoryDAO {
                 inventory.getStocklevel()
         );
     }
+
+    @Override
+    public Inventory search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 }

@@ -135,7 +135,7 @@ public class Delivery implements Initializable {
     }
 
     private void loadNextDeliveryId() throws SQLException, ClassNotFoundException {
-        String nextDeliveryId = deliveryBO.getNextDeliveryId();
+        String nextDeliveryId = deliveryBO.generateDeliveryId();
         Deliid.setText(nextDeliveryId);
     }
 

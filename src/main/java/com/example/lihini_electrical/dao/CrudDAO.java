@@ -4,11 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface CrudDAO<T> extends SuperDAO {
-    ArrayList<T> getAll() throws SQLException;
-    boolean save(T dto) throws SQLException;
-    boolean update(T dto) throws SQLException;
+    ArrayList<T> getAll() throws SQLException, ClassNotFoundException;
+    boolean save(T dto) throws SQLException, ClassNotFoundException;
+    boolean update(T dto) throws SQLException, ClassNotFoundException;
     boolean delete(String id) throws SQLException, ClassNotFoundException;
-    boolean exist(String id) throws SQLException;
-    String generateId() throws SQLException;
-    public T findById(String id) throws SQLException;
+    String generateId() throws SQLException, ClassNotFoundException;
+    public T search(String id) throws SQLException, ClassNotFoundException;
+    ArrayList<String>getAllIds()throws SQLException, ClassNotFoundException;
 }

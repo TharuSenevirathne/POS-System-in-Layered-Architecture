@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface OrdersBO extends SupplierBO {
     ArrayList<String> getAllOrderIds() throws SQLException, ClassNotFoundException;
-    OrdersDTO findById(String selectedOrderId) throws SQLException, ClassNotFoundException;
-    String getNextOrderId() throws SQLException, ClassNotFoundException;
+    OrdersDTO searchOrder(String selectedOrderId) throws SQLException, ClassNotFoundException;
+    String generateOrderId() throws SQLException, ClassNotFoundException;
     boolean saveOrder(OrdersDTO orderDTO);
 }

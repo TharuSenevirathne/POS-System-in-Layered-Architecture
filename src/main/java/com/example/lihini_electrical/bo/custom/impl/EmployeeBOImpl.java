@@ -18,7 +18,7 @@ public class EmployeeBOImpl implements EmployeeBO {
     @Override
     public ArrayList<EmployeeDTO> getAllEmployees() throws SQLException, ClassNotFoundException {
         ArrayList<EmployeeDTO> employeeDTOArrayList = new ArrayList<>();
-        ArrayList<Employee> employees = employeeDAO.getAllEmployees();
+        ArrayList<Employee> employees = employeeDAO.getAll();
         ObservableList<EmployeeTM> employeeTMS = FXCollections.observableArrayList();
 
         for (Employee employee : employees) {
@@ -29,8 +29,8 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public String getNextEmployeeId() throws SQLException, ClassNotFoundException {
-        String nextEmployeeId = employeeDAO.getNextEmployeeId();
+    public String generateEmployeeId() throws SQLException, ClassNotFoundException {
+        String nextEmployeeId = employeeDAO.generateId();
         return nextEmployeeId;
     }
 
@@ -52,15 +52,17 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public ArrayList<String> getAllEmployeeIds() throws SQLException {
+    public ArrayList<String> getAllEmployeeIds() throws SQLException, ClassNotFoundException {
         ArrayList<String> employeeIds = new ArrayList<>();
         employeeDAO.getAll();
         return employeeIds;
   }
 
     @Override
-    public EmployeeDTO findById(String selectedEmployeeId) {
-        String employeeId = selectedEmployeeId;
-        return employeeDAO.findById(selectedEmployeeId);
+    public EmployeeDTO searchEmployee(String selectedEmployeeId) throws SQLException, ClassNotFoundException {
+        Employee employee = employeeDAO.search(selectedEmployeeId);
+        EmployeeDTO employeeDTO = new EmployeeDTO(employee.getEmployeeId(),employee.getName(),employee.getAddress(),
+                employee.getPosition(),employee.getPhoneNumber());
+        return employeeDTO;
     }
 }

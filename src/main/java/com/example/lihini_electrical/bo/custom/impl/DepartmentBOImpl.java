@@ -18,7 +18,7 @@ public class DepartmentBOImpl implements DepartmentBO {
     @Override
     public ArrayList<DepartmentDTO> getAllDepartments() throws SQLException, ClassNotFoundException {
         ArrayList<DepartmentDTO> departmentDTOArrayList = new ArrayList<>();
-        ArrayList<Department> departments = departmentDAO.getAllDepartments();
+        ArrayList<Department> departments = departmentDAO.getAll();
         ObservableList<DepartmentTM> departmentTMS = FXCollections.observableArrayList();
         for (Department department1 : departments) {
             departmentDTOArrayList.add(new DepartmentDTO(department1.getDepartmentid(),
@@ -29,8 +29,8 @@ public class DepartmentBOImpl implements DepartmentBO {
     }
 
     @Override
-    public String getNextDepartmentId() throws SQLException, ClassNotFoundException {
-        String nextDepartmentId = departmentDAO.getNextDepartmentId();
+    public String generateDeliveryID() throws SQLException, ClassNotFoundException {
+        String nextDepartmentId = departmentDAO.generateId();
         return nextDepartmentId;
     }
 

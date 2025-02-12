@@ -18,7 +18,7 @@ public class ProductBOImpl implements ProductBO {
     @Override
     public ArrayList<ProductDTO> getAllProducts() throws SQLException, ClassNotFoundException {
         ArrayList<ProductDTO> products = new ArrayList<>();
-        ArrayList<Product> product = productDAO.getAllProducts();
+        ArrayList<Product> product = productDAO.getAll();
 
         ObservableList<ProductTM> productTMS = FXCollections.observableArrayList();
 
@@ -33,8 +33,8 @@ public class ProductBOImpl implements ProductBO {
         }
 
     @Override
-    public String getNextProductId() throws SQLException, ClassNotFoundException {
-        String nextProductId = productDAO.getNextProductId();
+    public String generateProductId() throws SQLException, ClassNotFoundException {
+        String nextProductId = productDAO.generateId();
         return nextProductId;
     }
 
@@ -63,8 +63,10 @@ public class ProductBOImpl implements ProductBO {
     }
 
     @Override
-    public ProductDTO findById(String selectedProductId) throws SQLException, ClassNotFoundException {
-        String productId = selectedProductId;
-        return productDAO.findById(productId);
+    public ProductDTO search(String selectedProductId) throws SQLException, ClassNotFoundException {
+        Product product = productDAO.search(selectedProductId);
+        ProductDTO productDTO = new ProductDTO(product.getProductId(),product.getName(),product.getPrice(),
+                product.getInventoryId(),product.getQuantity());
+        return productDTO;
     }
 }

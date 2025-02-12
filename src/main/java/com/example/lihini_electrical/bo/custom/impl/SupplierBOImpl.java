@@ -18,7 +18,7 @@ public class SupplierBOImpl implements SupplierBO {
     @Override
     public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {
         ArrayList<SupplierDTO> suppliers = new ArrayList<>();
-        ArrayList<Supplier> suppliers1 = supplierDAO.getAllSuppliers();
+        ArrayList<Supplier> suppliers1 = supplierDAO.getAll();
         ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
 
         for (Supplier supplier : suppliers1) {
@@ -31,8 +31,8 @@ public class SupplierBOImpl implements SupplierBO {
     }
 
     @Override
-    public String getNextSupplierId() throws SQLException, ClassNotFoundException {
-        String nextSupplierId = supplierDAO.getNextSupplierId();
+    public String generateSupplierId() throws SQLException, ClassNotFoundException {
+        String nextSupplierId = supplierDAO.generateId();
         return nextSupplierId;
     }
 

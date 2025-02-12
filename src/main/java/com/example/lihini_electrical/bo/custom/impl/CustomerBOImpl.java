@@ -19,28 +19,27 @@ public class  CustomerBOImpl implements CustomerBO {
 
     @Override
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException {
-        ArrayList<CustomerDTO> customerDTOArrayList = new ArrayList<>();
-        ArrayList<Customer> customer = customerDAO.getAllCustomers();
+        ArrayList<Customer> customers = customerDAO.getAll();
+        ArrayList<CustomerDTO> customerDTOs = new ArrayList<>();
         ObservableList<CustomerTM> customerTMS = FXCollections.observableArrayList();
-        for (Customer customer1 : customer) {
-            customerDTOArrayList.add(new CustomerDTO(customer1.getCustomerId(),
+        for (Customer customer1 : customers) {
+            customerDTOs.add(new CustomerDTO(customer1.getCustomerId(),
                     customer1.getName(), customer1.getAddress(), customer1.getPhoneNo(),
                     customer1.getEmail(), customer1.getType(), customer1.getEmployeeId()));
         }
-        return customerDTOArrayList;
+        return customerDTOs;
     }
 
     @Override
-    public String getNextCustomerId() throws SQLException, ClassNotFoundException {
-        String nextCustomerId = customerDAO.getNextCustomerId();
-        return nextCustomerId;
+    public String generateCustomerId() throws SQLException, ClassNotFoundException {
+        return customerDAO.generateId();
     }
 
     @Override
-    public boolean saveCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException {
-        return customerDAO.save(new Customer(customerDTO.getCustomerId(),customerDTO.getName(),
-                customerDTO.getAddress(),customerDTO.getPhoneNo(),customerDTO.getEmail(),
-                customerDTO.getType(),customerDTO.getEmployeeId()));
+    public boolean saveCustomer(CustomerDTO dto ) throws SQLException, ClassNotFoundException {
+        return customerDAO.save(new Customer(dto.getCustomerId(),dto.getName(),
+                dto.getAddress(),dto.getPhoneNo(),dto.getEmail(),
+                dto.getType(),dto.getEmployeeId()));
     }
 
     @Override
@@ -49,22 +48,24 @@ public class  CustomerBOImpl implements CustomerBO {
     }
 
     @Override
-    public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException {
-        return customerDAO.update(new Customer(customerDTO.getCustomerId(),customerDTO.getName(),customerDTO.getAddress(),
-                customerDTO.getPhoneNo(),customerDTO.getEmail(),customerDTO.getType(),customerDTO.getEmployeeId()));
+    public boolean updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
+        return customerDAO.update(new Customer(dto.getCustomerId(),dto.getName(),dto.getAddress(),
+                dto.getPhoneNo(),dto.getEmail(),dto.getType(),dto.getEmployeeId()));
     }
 
     @Override
-    public ArrayList<String> getAllCustomerIds() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
         ArrayList<String> customerIds = new ArrayList<>();
         customerDAO.getAll();
         return customerIds;
     }
 
     @Override
-    public CustomerDTO findById(String selectedCustomerId) throws SQLException, ClassNotFoundException {
-        String selectedCustomerid = selectedCustomerId;
-        return customerDAO.findById(selectedCustomerid);
+    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
+        Customer customer = customerDAO.search(id);
+        CustomerDTO customerDTO = new CustomerDTO(customer.getCustomerId(),customer.getName(),customer.getAddress(),
+                customer.getPhoneNo(),customer.getEmail(),customer.getType(),customer.getEmployeeId());
+                return customerDTO;
     }
 
 }

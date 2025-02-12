@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface InventoryBO extends SuperBO {
     ArrayList<InventoryDTO> getAllInventories() throws SQLException, ClassNotFoundException;
-    String getNextInventoryId() throws SQLException, ClassNotFoundException;
+    String generateInventoryId() throws SQLException, ClassNotFoundException;
     boolean deleteInventory(String inventoryId) throws SQLException, ClassNotFoundException;
     boolean saveInventory(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
     boolean updateInventory(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;

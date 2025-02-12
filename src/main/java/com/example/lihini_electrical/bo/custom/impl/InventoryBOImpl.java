@@ -17,7 +17,7 @@ public class InventoryBOImpl implements InventoryBO {
     @Override
     public ArrayList<InventoryDTO> getAllInventories() throws SQLException, ClassNotFoundException {
         ArrayList<InventoryDTO> inventoryDTOArrayList = new ArrayList<>();
-        ArrayList<Inventory> inventory = inventoryDAO.getAllInventories();
+        ArrayList<Inventory> inventory = inventoryDAO.getAll();
 
         ObservableList<InventoryTM> inventoryTMS = FXCollections.observableArrayList();
 
@@ -30,9 +30,8 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public String getNextInventoryId() throws SQLException, ClassNotFoundException {
-        String nextInventorytId = inventoryDAO.getNextInventoryId();
-        return nextInventorytId;
+    public String generateInventoryId() throws SQLException, ClassNotFoundException {
+        return inventoryDAO.generateId();
     }
 
     @Override
@@ -54,7 +53,7 @@ public class InventoryBOImpl implements InventoryBO {
 
     @Override
     public String getAllInventoryIds() throws SQLException, ClassNotFoundException {
-        String nextInventorytId = inventoryDAO.getNextInventoryId();
+        String nextInventorytId = String.valueOf(inventoryDAO.getAllIds());
         return nextInventorytId;
     }
 }

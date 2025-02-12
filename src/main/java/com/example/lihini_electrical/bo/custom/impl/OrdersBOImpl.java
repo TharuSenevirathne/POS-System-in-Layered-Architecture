@@ -26,15 +26,15 @@ public class OrdersBOImpl implements OrdersBO {
         return orderIds;
     }
 
-    @Override
-    public OrdersDTO findById(String selectedOrderId) throws SQLException, ClassNotFoundException {
-        String selectedOrderid = selectedOrderId;
-        return ordersDAO.findById(selectedOrderid);
+    public OrdersDTO searchOrder(String selectedOrderId) throws SQLException, ClassNotFoundException {
+        Orders orders = ordersDAO.search(selectedOrderId);
+        OrdersDTO ordersDTO = new OrdersDTO();
+        return ordersDTO;
     }
 
     @Override
-    public String getNextOrderId() throws SQLException, ClassNotFoundException {
-        return ordersDAO.getNextOrderId();
+    public String generateOrderId() throws SQLException, ClassNotFoundException {
+        return ordersDAO.generateId();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class OrdersBOImpl implements OrdersBO {
     @Override
     public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {
         ArrayList<SupplierDTO> supplierDTOArrayList = new ArrayList<>();
-        ArrayList<Supplier> supplierDTOS = supplierDAO.getAllSuppliers();
+        ArrayList<Supplier> supplierDTOS = supplierDAO.getAll();
 
         ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
 
@@ -58,8 +58,8 @@ public class OrdersBOImpl implements OrdersBO {
     }
 
     @Override
-    public String getNextSupplierId() throws SQLException, ClassNotFoundException {
-        String nextSupplierId = supplierDAO.getNextSupplierId();
+    public String generateSupplierId() throws SQLException, ClassNotFoundException {
+        String nextSupplierId = supplierDAO.generateId();
         return nextSupplierId;
     }
 

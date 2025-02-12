@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface PaymentBO extends SuperBO {
     ArrayList<PaymentDTO> getAllPayments() throws SQLException, ClassNotFoundException;
-    String getNextPaymentId() throws SQLException, ClassNotFoundException;
+    String generatePaymentId() throws SQLException, ClassNotFoundException;
     boolean deletePayment(String paymentId) throws SQLException, ClassNotFoundException;
     boolean savePayment(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException;
     boolean updatePayment(PaymentDTO paymentDTO) throws SQLException, ClassNotFoundException;

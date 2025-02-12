@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public interface DepartmentBO extends SuperBO {
     ArrayList<DepartmentDTO> getAllDepartments() throws SQLException, ClassNotFoundException;
-    String getNextDepartmentId() throws SQLException, ClassNotFoundException;
+    String generateDeliveryID() throws SQLException, ClassNotFoundException;
     boolean deleteDepartment(String departmentId) throws SQLException, ClassNotFoundException;
-    boolean saveDepartment(DepartmentDTO departmentDTO) throws SQLException, ClassNotFoundException;
-    boolean updateDepartment(DepartmentDTO departmentDTO) throws SQLException, ClassNotFoundException;
+    boolean saveDepartment(DepartmentDTO dto) throws SQLException, ClassNotFoundException;
+    boolean updateDepartment(DepartmentDTO dto) throws SQLException, ClassNotFoundException;
 }

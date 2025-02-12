@@ -13,15 +13,15 @@ public class DeliveryBOImpl implements DeliveryBO {
     DeliveryDAO deliveryDAO = (DeliveryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.DELIVERY);
 
     @Override
-    public String getNextDeliveryId() throws SQLException, ClassNotFoundException {
-        String nextDeliveryId = deliveryDAO.getNextDeliveryId();
+    public String generateDeliveryId() throws SQLException, ClassNotFoundException {
+        String nextDeliveryId = deliveryDAO.generateId();
         return nextDeliveryId;
     }
 
     @Override
     public ArrayList<DeliveryDTO> getAllDeliveries() throws SQLException, ClassNotFoundException {
         ArrayList<DeliveryDTO> deliveryDTOArrayList = new ArrayList<>();
-        ArrayList<Delivery> deliveries = deliveryDAO.getAllDeliveries();
+        ArrayList<Delivery> deliveries = deliveryDAO.getAll();
 
         for (Delivery delivery1 : deliveries) {
             deliveryDTOArrayList.add(new DeliveryDTO(delivery1.getDeliveryId(),delivery1.getAddress(),

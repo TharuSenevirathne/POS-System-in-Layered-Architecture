@@ -23,7 +23,7 @@ public class WarehouseBOImpl implements WarehouseBO {
     @Override
     public ArrayList<WarehouseDTO> getAllWarehouses() throws SQLException, ClassNotFoundException {
         ArrayList<WarehouseDTO> allWarehouses = new ArrayList<>();
-        ArrayList<Warehouse> warehouseDTOS = warehouseDAO.getAllWarehouses();
+        ArrayList<Warehouse> warehouseDTOS = warehouseDAO.getAll();
 
         ObservableList<WarehouseTM> warehouseTMS = FXCollections.observableArrayList();
 
@@ -36,8 +36,8 @@ public class WarehouseBOImpl implements WarehouseBO {
     }
 
     @Override
-    public String getNextWarehouseId() throws SQLException, ClassNotFoundException {
-        String nextWarehouseId = warehouseDAO.getNextWarehouseId();
+    public String generateWarehouseId() throws SQLException, ClassNotFoundException {
+        String nextWarehouseId = warehouseDAO.generateId();
         return nextWarehouseId;
     }
 
@@ -60,7 +60,7 @@ public class WarehouseBOImpl implements WarehouseBO {
     @Override
     public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {
         ArrayList<SupplierDTO> allSuppliers = new ArrayList<>();
-        ArrayList<Supplier> supplierDTOS = supplierDAO.getAllSuppliers();
+        ArrayList<Supplier> supplierDTOS = supplierDAO.getAll();
 
         ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
 
@@ -74,8 +74,8 @@ public class WarehouseBOImpl implements WarehouseBO {
     }
 
     @Override
-    public String getNextSupplierId() throws SQLException, ClassNotFoundException {
-        String nextSupplierId = supplierDAO.getNextSupplierId();
+    public String generateSupplierId() throws SQLException, ClassNotFoundException {
+        String nextSupplierId = supplierDAO.generateId();
         return nextSupplierId;
     }
 

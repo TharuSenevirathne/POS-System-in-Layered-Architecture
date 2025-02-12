@@ -141,7 +141,7 @@ public class Payment implements Initializable {
     }
 
     private void loadNextPaymentId() throws SQLException ,ClassNotFoundException{
-        String nextPaymentId = paymentBO.getNextPaymentId();
+        String nextPaymentId = paymentBO.generatePaymentId();
         Payid.setText(nextPaymentId);
     }
 
