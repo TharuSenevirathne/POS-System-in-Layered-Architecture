@@ -94,6 +94,7 @@ public class Payment implements Initializable {
     private TableColumn<PaymentTM, Date> dateColumn;
 
     PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         paymentidColumn.setCellValueFactory(new PropertyValueFactory<>("paymentID"));

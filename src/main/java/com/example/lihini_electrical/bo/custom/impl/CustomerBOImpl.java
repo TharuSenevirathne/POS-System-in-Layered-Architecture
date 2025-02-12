@@ -5,8 +5,10 @@ import com.example.lihini_electrical.dao.DAOFactory;
 import com.example.lihini_electrical.dao.custom.CustomerDAO;
 import com.example.lihini_electrical.dto.CustomerDTO;
 import com.example.lihini_electrical.entity.Customer;
+import com.example.lihini_electrical.tdm.CustomerTM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class  CustomerBOImpl implements CustomerBO {
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException {
         ArrayList<CustomerDTO> customerDTOArrayList = new ArrayList<>();
         ArrayList<Customer> customer = customerDAO.getAllCustomers();
+        ObservableList<CustomerTM> customerTMS = FXCollections.observableArrayList();
         for (Customer customer1 : customer) {
             customerDTOArrayList.add(new CustomerDTO(customer1.getCustomerId(),
                     customer1.getName(), customer1.getAddress(), customer1.getPhoneNo(),
@@ -53,24 +56,15 @@ public class  CustomerBOImpl implements CustomerBO {
 
     @Override
     public ArrayList<String> getAllCustomerIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> customerids = new ArrayList<>();
-        ArrayList<String> customerIds = customerDAO.getAllCustomerIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.addAll(customerIds);
-        CustomeridCombobox.setItems(observableList);
-        return null;
+        ArrayList<String> customerIds = new ArrayList<>();
+        customerDAO.getAll();
+        return customerIds;
     }
-
 
     @Override
     public CustomerDTO findById(String selectedCustomerId) throws SQLException, ClassNotFoundException {
-        String selectedCustomerid = CustomeridCombobox.getSelectionModel().getSelectedItem();
-        CustomerDTO customerDTO = customerDAO.findById(selectedCustomerId);
-
-        if (customerDTO != null) {
-            CustomerName.setText(customerDTO.getName());
-        }
-        return customerDTO;
+        String selectedCustomerid = selectedCustomerId;
+        return customerDAO.findById(selectedCustomerid);
     }
 
 }

@@ -3,7 +3,6 @@ package com.example.lihini_electrical.dao.custom.impl;
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.CustomerDAO;
 import com.example.lihini_electrical.dto.CustomerDTO;
-import com.example.lihini_electrical.dto.OrdersDTO;
 import com.example.lihini_electrical.entity.Customer;
 
 import java.sql.ResultSet;
@@ -51,7 +50,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean delete(String customerId) throws  SQLException,ClassNotFoundException {
+    public boolean delete(String customerId) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("delete from Customer where cust_id=?", customerId);
     }
 

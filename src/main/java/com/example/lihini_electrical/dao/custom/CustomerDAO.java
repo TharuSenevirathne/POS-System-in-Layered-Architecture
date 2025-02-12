@@ -11,7 +11,7 @@ public interface CustomerDAO extends CrudDAO {
     ArrayList<Customer> getAllCustomers() throws SQLException, ClassNotFoundException;
     String getNextCustomerId() throws SQLException, ClassNotFoundException;
     boolean save(Customer customer) throws SQLException, ClassNotFoundException;
-    boolean delete(String customerId) throws SQLException,ClassNotFoundException;
+    boolean delete(String customerId) throws SQLException, ClassNotFoundException;
     boolean update(Customer customer) throws SQLException, ClassNotFoundException;
     ArrayList<String> getAllCustomerIds() throws SQLException, ClassNotFoundException;
     CustomerDTO findById(String selectedCustomerId) throws SQLException, ClassNotFoundException;

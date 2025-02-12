@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public interface ProductDAO extends CrudDAO<Product> {
     ArrayList<Product> getAllProducts() throws SQLException, ClassNotFoundException;
     String getNextProductId() throws SQLException, ClassNotFoundException;
-    boolean delete(String productId) throws SQLException, ClassNotFoundException;
-    boolean save(Product product) throws SQLException, ClassNotFoundException;
-    boolean update(Product product) throws SQLException, ClassNotFoundException;
+    boolean delete(String productId) throws SQLException;
+    boolean save(Product product) throws SQLException;
+    boolean update(Product product) throws SQLException;
     ArrayList<String> getAllProductIds() throws SQLException, ClassNotFoundException;
     ProductDTO findById(String selectedProductId) throws SQLException, ClassNotFoundException;
 }

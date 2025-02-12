@@ -21,22 +21,15 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public ArrayList<String> getAllOrderIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> orderIds = ordersDAO.getAllOrderIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.addAll(orderIds);
-        OrderidComboBox.setItems(observableList);
-        return null;
+        ArrayList<String> orderIds = new ArrayList<>();
+        ordersDAO.getAll();
+        return orderIds;
     }
 
     @Override
     public OrdersDTO findById(String selectedOrderId) throws SQLException, ClassNotFoundException {
-        String selectedOrderId = OrderidComboBox.getSelectionModel().getSelectedItem();
-        OrdersDTO ordersDTO = ordersDAO.findById(selectedOrderId);
-
-        if (ordersDTO != null) {
-            System.out.println(" ");
-        }
-        return null;
+        String selectedOrderid = selectedOrderId;
+        return ordersDAO.findById(selectedOrderid);
     }
 
     @Override
@@ -47,7 +40,7 @@ public class OrdersBOImpl implements OrdersBO {
     @Override
     public boolean saveOrder(OrdersDTO orderDTO) {
         return ordersDAO.save(new Orders(orderDTO.getOrderId(),orderDTO.getCustomerId(),orderDTO.getDate(),
-                orderDTO.getOrdersAndProductDetailsDTOS());
+                orderDTO.getOrdersAndProductDetailsDTOS()));
     }
 
     @Override
@@ -58,10 +51,8 @@ public class OrdersBOImpl implements OrdersBO {
         ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
 
         for (Supplier supplierDTO : supplierDTOS) {
-            supplierDTOArrayList.add(supplierDTO.getSupplierId(),
-                    supplierDTO.getName(),
-                    supplierDTO.getBrand(),
-                    supplierDTO.getPhoneNo());
+            supplierDTOArrayList.add(new SupplierDTO((supplierDTO.getSupplierId()),supplierDTO.getName(),supplierDTO.getBrand(),
+                    supplierDTO.getPhoneNo()));
         }
         return supplierDTOArrayList;
     }
@@ -79,12 +70,13 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public boolean saveSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
-        return supplierDAO.save(supplierDTO.getSupplierId(),supplierDTO.getName(),supplierDTO.getBrand(),
-                supplierDTO.getPhoneNo());
+        return supplierDAO.save(new Supplier((supplierDTO.getSupplierId()),supplierDTO.getName(),supplierDTO.getBrand(),
+                supplierDTO.getPhoneNo()));
     }
 
     @Override
     public boolean updateSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
-        return supplierDAO.update(supplierDTO.getSupplierId(),supplierDTO.getName(),supplierDTO.getBrand(),
-                supplierDTO.getPhoneNo());    }
+        return supplierDAO.update(new Supplier((supplierDTO.getSupplierId()),supplierDTO.getName(),supplierDTO.getBrand(),
+                supplierDTO.getPhoneNo()));
+    }
 }

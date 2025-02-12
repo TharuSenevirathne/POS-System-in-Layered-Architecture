@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface DiscountDAO extends CrudDAO<Discount> {
     ArrayList<Discount> getAllDiscounts() throws SQLException, ClassNotFoundException;
     String getNextDiscountId() throws SQLException, ClassNotFoundException;
-    boolean delete(String discountId) throws SQLException, ClassNotFoundException;
-    boolean save(Discount discount) throws SQLException, ClassNotFoundException;
-    boolean update(Discount discount) throws SQLException, ClassNotFoundException;
+    boolean delete(String discountId) throws SQLException;
+    boolean save(Discount discount) throws SQLException;
+    boolean update(Discount discount) throws SQLException;
 }

@@ -140,7 +140,6 @@ public class Product implements Initializable {
         InventoryidCombobox.setItems(observableList);
     }
 
-
     private void loadTableData() throws SQLException ,ClassNotFoundException {
         ArrayList<ProductDTO> productDTOS = productBO.getAllProducts();
 

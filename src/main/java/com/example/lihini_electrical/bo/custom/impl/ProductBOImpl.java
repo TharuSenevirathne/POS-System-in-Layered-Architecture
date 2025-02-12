@@ -57,24 +57,14 @@ public class ProductBOImpl implements ProductBO {
 
     @Override
     public ArrayList<String> getAllProductIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> productIds = productDAO.getAllProductIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.addAll(productIds);
-        ProductidCombobox.setItems(observableList);
-        return null;
+        ArrayList<String> productIds = new ArrayList<>();
+        productDAO.getAll();
+        return productIds;
     }
 
     @Override
     public ProductDTO findById(String selectedProductId) throws SQLException, ClassNotFoundException {
-        String selectedProductId = ProductidCombobox.getSelectionModel().getSelectedItem();
-        ProductDTO productDTO = productDAO.findById(selectedProductId);
-
-        // If customer found (customerDTO not null)
-        if (productDTO != null) {
-            ProductName.setText(productDTO.getName());
-            QTYTextfield.setText(productDTO.getQuantity().toString());
-            UnitPrice.setText(String.valueOf(productDTO.getPrice()));
-        }
-        return null;
+        String productId = selectedProductId;
+        return productDAO.findById(productId);
     }
 }

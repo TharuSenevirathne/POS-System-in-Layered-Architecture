@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface DeliveryDAO extends CrudDAO {
     String getNextDeliveryId() throws SQLException, ClassNotFoundException;
     ArrayList<Delivery> getAllDeliveries() throws SQLException, ClassNotFoundException;
-    boolean delete(String deliveryId) throws SQLException, ClassNotFoundException;
+    boolean delete(String deliveryId) throws SQLException;
     boolean save(Delivery delivery) throws SQLException, ClassNotFoundException;
     boolean update(Delivery delivery) throws SQLException, ClassNotFoundException;
 

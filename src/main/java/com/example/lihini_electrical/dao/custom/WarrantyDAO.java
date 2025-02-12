@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface WarrantyDAO extends CrudDAO<Warranty> {
     ArrayList<Warranty> getAllWarranties() throws SQLException, ClassNotFoundException;
     String getNextWarrantyId() throws SQLException, ClassNotFoundException;
-    boolean delete(String warrantyId) throws SQLException, ClassNotFoundException;
-    boolean save(Warranty warrantyDTO) throws SQLException, ClassNotFoundException;
-    boolean update(Warranty warrantyDTO) throws SQLException, ClassNotFoundException;
+    boolean delete(String warrantyId) throws SQLException;
+    boolean save(Warranty warrantyDTO) throws SQLException;
+    boolean update(Warranty warrantyDTO) throws SQLException;
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface DepartmentDAO extends CrudDAO<Department> {
     ArrayList<Department> getAllDepartments() throws SQLException, ClassNotFoundException;
     String getNextDepartmentId() throws SQLException, ClassNotFoundException;
-    boolean delete(String departmentId) throws SQLException, ClassNotFoundException;
-    boolean save(Department department) throws SQLException, ClassNotFoundException;
-    boolean update(Department department) throws SQLException, ClassNotFoundException;
+    boolean delete(String departmentId) throws SQLException;
+    boolean save(Department department) throws SQLException;
+    boolean update(Department department) throws SQLException;
 }

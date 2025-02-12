@@ -17,22 +17,15 @@ public class VehicleBOImpl implements VehicleBO {
 
     @Override
     public ArrayList<String> getAllVehicleIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> vehicleIds = vehicleDAO.getAllVehicleIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.addAll(vehicleIds);
-        VehicleidCombobox.setItems(observableList);
+        ArrayList<String> vehicleIds = new ArrayList<>();
+         vehicleDAO.getAll();
         return vehicleIds;
     }
 
     @Override
     public VehicleDTO findById(String selectedVehicleId) throws SQLException, ClassNotFoundException {
-        String selectedVehicleid = VehicleidCombobox.getSelectionModel().getSelectedItem();
-        VehicleDTO vehicleDTO = vehicleDAO.findById(selectedVehicleid);
-
-        if (vehicleDTO != null) {
-            System.out.println(" ");
-        }
-        return null;
+        String vehicleId = selectedVehicleId;
+        return vehicleDAO.findById(vehicleId);
     }
 
     @Override
@@ -58,7 +51,6 @@ public class VehicleBOImpl implements VehicleBO {
     public boolean saveVehicle(VehicleDTO vehicleDTO) throws SQLException, ClassNotFoundException {
         return vehicleDAO.save(new Vehicle(vehicleDTO.getVehicleId(),vehicleDTO.getType()));
     }
-
 
     @Override
     public boolean deleteVehicle(String vehicleId) throws SQLException, ClassNotFoundException {

@@ -52,12 +52,15 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public ArrayList<String> getAllEmployeeIds() {
-        return null;
-    }
+    public ArrayList<String> getAllEmployeeIds() throws SQLException {
+        ArrayList<String> employeeIds = new ArrayList<>();
+        employeeDAO.getAll();
+        return employeeIds;
+  }
 
     @Override
     public EmployeeDTO findById(String selectedEmployeeId) {
-        return null;
+        String employeeId = selectedEmployeeId;
+        return employeeDAO.findById(selectedEmployeeId);
     }
 }
