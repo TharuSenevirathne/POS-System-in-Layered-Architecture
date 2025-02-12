@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Orders">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.82">
+         <image>
+            <Image url="@../assests/istockphoto-1091892722-612x612.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="577.0" layoutY="14.0">
+         <image>
+            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="GoToDashboardButton" layoutX="572.0" layoutY="563.0" mnemonicParsing="false" onAction="#GoToDashboardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="ResetButton" layoutX="66.0" layoutY="375.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="269.0" style="-fx-background-color: red;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="OrdersTable" layoutX="66.0" layoutY="417.0" opacity="0.91" prefHeight="134.0" prefWidth="562.0" style="-fx-background-color: orange;">
+         <columns>
+            <TableColumn fx:id="productidColumn" prefWidth="76.80001068115234" style="-fx-background-color: orange;" text="Product id" />
+            <TableColumn fx:id="nameColumn" prefWidth="90.39996337890625" style="-fx-background-color: orange;" text="Name" />
+            <TableColumn fx:id="cartQtyColumn" prefWidth="92.0" style="-fx-background-color: orange;" text="Cart Qty" />
+            <TableColumn fx:id="unitPricecolumn" prefWidth="100.0" style="-fx-background-color: orange;" text="Unit Price" />
+            <TableColumn fx:id="totalColumn" prefWidth="97.60006713867188" style="-fx-background-color: orange;" text="Total" />
+            <TableColumn fx:id="actionColumn" prefWidth="108.79998779296875" style="-fx-background-color: orange;" text="Action" />
+         </columns>
+      </TableView>
+      <Label fx:id="TiTleLabel" alignment="CENTER" layoutX="41.0" layoutY="40.0" prefHeight="39.0" prefWidth="586.0" text="Orders !!">
+         <font>
+            <Font name="Mongolian Baiti" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.52" />
+         </effect>
+      </Label>
+      <Label fx:id="orderid" layoutX="182.0" layoutY="162.0" text="O001">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="CustomeridLabel" layoutX="68.0" layoutY="190.0" text="Customer id :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="QTYOnHandLabel" layoutX="67.0" layoutY="248.0" text="QTY On Hand : ">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="OrderidLabel" layoutX="69.0" layoutY="163.0" text="Order id :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="DateLabel" layoutX="372.0" layoutY="162.0" text="Date : ">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="CustomeridCombobox" layoutX="180.0" layoutY="186.0" onAction="#CustomeridComboboxOnAction" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: orange;" />
+      <TextField fx:id="QTYTextfield" layoutX="478.0" layoutY="269.0" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: orange; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="CustomerNameLabel" layoutX="370.0" layoutY="199.0" text="Customer Name :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="CustomerName" layoutX="501.0" layoutY="199.0" text="nimal">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="AddToCartButton" layoutX="67.0" layoutY="338.0" mnemonicParsing="false" onAction="#AddToCartOnAction" prefHeight="26.0" prefWidth="562.0" style="-fx-background-color: black;" text="Add To Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="DateTextfield" layoutX="454.0" layoutY="159.0" prefHeight="26.0" prefWidth="175.0" />
+      <Label fx:id="ProductIdLabel" layoutX="66.0" layoutY="222.0" text="Product id :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="ProductNameLabel" layoutX="375.0" layoutY="231.0" text="Product Name :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="ProductName" layoutX="502.0" layoutY="235.0" text="Wire">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="ProductidCombobox" layoutX="180.0" layoutY="218.0" onAction="#ProductidComboboxOnAction" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: orange;" />
+      <Label fx:id="QTYOnHand" layoutX="181.0" layoutY="248.0" prefHeight="18.0" prefWidth="37.0" text="0">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="QTYLabel" layoutX="372.0" layoutY="270.0" text="Qty :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="UnitPriceLabel" layoutX="68.0" layoutY="275.0" text="Unit price :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="UnitPrice" layoutX="179.0" layoutY="273.0" text="0.00">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="PlaceOrderButton" layoutX="362.0" layoutY="375.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" prefHeight="26.0" prefWidth="269.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

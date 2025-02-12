@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Warranty">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" layoutX="1.0" layoutY="2.0">
+         <image>
+            <Image url="@../assests/istockphoto-934787728-612x612.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="582.0" layoutY="14.0">
+         <image>
+            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="WarrantyTable" layoutX="78.0" layoutY="360.0" onMouseClicked="#WarrantyOnMouseClicked" prefHeight="186.0" prefWidth="554.0" style="-fx-background-color: grey;">
+        <columns>
+          <TableColumn fx:id="warrantyidColumn" prefWidth="112.0" style="-fx-background-color: grey;" text="Warranty  id" />
+          <TableColumn fx:id="productnameColumn" prefWidth="147.1999969482422" style="-fx-background-color: grey;" text="Product Name" />
+            <TableColumn fx:id="warrantyperiodtimeColumn" prefWidth="146.39996337890625" style="-fx-background-color: grey;" text="Warranty Period Time" />
+            <TableColumn fx:id="warrantystartingdateColumn" prefWidth="148.800048828125" style="-fx-background-color: grey;" text="Warranty Starting Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="ResetButton" layoutX="78.0" layoutY="318.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="GoToDashboardButton" layoutX="572.0" layoutY="564.0" mnemonicParsing="false" onAction="#GoToDashboardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="DeleteButton" layoutX="225.0" layoutY="318.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="UpdateButton" layoutX="369.0" layoutY="318.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="514.0" layoutY="318.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: grey;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="TitleLabel" alignment="CENTER" layoutX="13.0" layoutY="103.0" prefHeight="39.0" prefWidth="681.0" text="Warranty !!" textFill="WHITE">
+         <font>
+            <Font name="Mongolian Baiti" size="35.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="WarrantyStartingDateLabel" layoutX="117.0" layoutY="271.0" text="Warranty Starting Date :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="WarrantyPeriodTimeLabel" layoutX="117.0" layoutY="241.0" text="Warranty Period Time :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="ProductNameLabel" layoutX="117.0" layoutY="211.0" text="Product Name :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="Warrantyid" layoutX="312.0" layoutY="183.0" text="W001">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="WarrantyidLabel" layoutX="117.0" layoutY="183.0" text="Warranty id :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ProductNameTextfield" layoutX="311.0" layoutY="206.0" prefHeight="26.0" prefWidth="318.0" promptText="Enter product name here" style="-fx-background-color: grey; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="WarrantyPeriodTimeTextfield" layoutX="311.0" layoutY="237.0" prefHeight="26.0" prefWidth="318.0" promptText="Enter warranty period time here" style="-fx-background-color: grey; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <DatePicker fx:id="WarrantyStartingDateTextfield" layoutX="311.0" layoutY="267.0" prefHeight="26.0" prefWidth="318.0" />
+   </children>
+</AnchorPane>

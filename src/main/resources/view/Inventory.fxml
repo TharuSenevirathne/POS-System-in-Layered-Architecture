@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Inventory">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.81">
+         <image>
+            <Image url="@../assests/istockphoto-1193312204-612x612.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="InventoryTable" layoutX="67.0" layoutY="338.0" onMouseClicked="#InventoryOnMouseCliked" prefHeight="200.0" prefWidth="566.0" style="-fx-background-color: tan;">
+        <columns>
+          <TableColumn fx:id="InvenidColumn" prefWidth="184.79999542236328" style="-fx-background-color: tan;" text="Inventory id" />
+          <TableColumn fx:id="typeColumn" prefWidth="204.79998779296875" style="-fx-background-color: tan;" text="Type" />
+            <TableColumn fx:id="stockLevelColumn" prefWidth="174.39993286132812" style="-fx-background-color: tan;" text="Stock Level" />
+        </columns>
+      </TableView>
+      <Button fx:id="ResetButton" layoutX="67.0" layoutY="293.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #C49E78;" text="Reset">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="StockLevelTextfield" layoutX="257.0" layoutY="247.0" prefHeight="26.0" prefWidth="374.0" promptText="Enter stock level here" style="-fx-background-color: tan; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="TitleLabel" alignment="CENTER" layoutX="3.0" layoutY="110.0" prefHeight="18.0" prefWidth="694.0" text="Inventory !!">
+         <font>
+            <Font name="Mongolian Baiti" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.51" />
+         </effect>
+      </Label>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="577.0" layoutY="14.0">
+         <image>
+            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="GoToDashboardButton" layoutX="571.0" layoutY="560.0" mnemonicParsing="false" onAction="#GoToDashboarOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="Inventoryid" layoutX="261.0" layoutY="182.0" text="I001">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="DeleteButton" layoutX="218.0" layoutY="293.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #C49E78;" text="Delete">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="UpdateButton" layoutX="369.0" layoutY="293.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #C49E78;" text="Update">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="519.0" layoutY="293.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #C49E78;" text="Save">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="TypeTextfield" layoutX="257.0" layoutY="213.0" prefHeight="26.0" prefWidth="374.0" promptText="Enter type here" style="-fx-background-color: tan; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="InventoryidLabel" layoutX="105.0" layoutY="182.0" text="Inventory id :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="TypeLabel" layoutX="105.0" layoutY="217.0" text="Type : ">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="StockLevelLabel" layoutX="105.0" layoutY="251.0" text="Stock Level :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

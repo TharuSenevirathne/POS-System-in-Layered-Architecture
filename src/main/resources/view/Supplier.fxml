@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Supplier">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.95">
+         <image>
+            <Image url="@../assests/istockphoto-1404030350-612x612.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="577.0" layoutY="14.0">
+         <image>
+            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="TitleLabel" alignment="CENTER" layoutX="4.0" layoutY="111.0" prefHeight="18.0" prefWidth="690.0" text="Supplier !!" textFill="WHITE">
+         <font>
+            <Font name="Mongolian Baiti" size="36.0" />
+         </font>
+         <effect>
+            <Glow level="0.41" />
+         </effect>
+      </Label>
+      <Label fx:id="SupplieridLabel" layoutX="98.0" layoutY="197.0" text="Supplier id : " textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="supplierid" layoutX="229.0" layoutY="197.0" text="S001" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="PhoneNoLabel" layoutX="104.0" layoutY="295.0" text="Phone No :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="BrandLabel" layoutX="103.0" layoutY="262.0" text=" Brand :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="NameLabel" layoutX="103.0" layoutY="229.0" text="Name :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="BrandTextfield" layoutX="227.0" layoutY="258.0" prefHeight="26.0" prefWidth="374.0" promptText="Enter your brand here" style="-fx-background-color: #0041C2; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="NameTextfield" layoutX="227.0" layoutY="225.0" prefHeight="26.0" prefWidth="374.0" promptText="Enter your name here" style="-fx-background-color: #0041C2; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="PhoneNoTextfield" layoutX="229.0" layoutY="291.0" prefHeight="26.0" prefWidth="374.0" promptText="Enter your contact no here" style="-fx-background-color: #0041C2; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Button fx:id="ResetButton" layoutX="97.0" layoutY="333.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #00308F;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="493.0" layoutY="333.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #00308F;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="UpdateButton" layoutX="360.0" layoutY="333.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #00308F;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="DeleteButton" layoutX="229.0" layoutY="333.0" mnemonicParsing="false" onAction="#DeleteOnActtion" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #00308F;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="SupplierTable" layoutX="97.0" layoutY="379.0" onMouseClicked="#SupplierOnMouseClicked" opacity="0.99" prefHeight="164.0" prefWidth="505.0" style="-fx-background-color: white;">
+         <columns>
+            <TableColumn fx:id="supidColumn" prefWidth="111.99994659423828" style="-fx-background-color: white;" text="Supplier id" />
+            <TableColumn fx:id="nameColumn" prefWidth="137.60003662109375" style="-fx-background-color: white;" text="Name" />
+            <TableColumn fx:id="brandColumn" prefWidth="122.4000244140625" style="-fx-background-color: white;" text="Brand" />
+            <TableColumn fx:id="phoneNoColumn" prefWidth="136.79989624023438" style="-fx-background-color: white;" text="Phone No" />
+         </columns>
+      </TableView>
+      <Button fx:id="GoToDashboardButton" layoutX="571.0" layoutY="560.0" mnemonicParsing="false" onAction="#GoToDashboardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

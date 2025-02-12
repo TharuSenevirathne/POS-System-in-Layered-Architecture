@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Product">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.87">
+         <image>
+            <Image url="@../assests/istockphoto-1329491486-612x612.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="ProductTable" layoutX="76.0" layoutY="372.0" onMouseClicked="#ProductOnMouseClicked" opacity="0.99" prefHeight="172.0" prefWidth="547.0" style="-fx-background-color: gold;">
+        <columns>
+          <TableColumn fx:id="productidColumn" prefWidth="98.39997100830078" style="-fx-background-color: gold;" text="Product id" />
+          <TableColumn fx:id="nameColumn" prefWidth="117.5999755859375" style="-fx-background-color: gold;" text="Name" />
+            <TableColumn fx:id="priceColumn" prefWidth="114.4000244140625" style="-fx-background-color: gold;" text="Price" />
+            <TableColumn fx:id="qtyColumn" prefWidth="114.39999389648438" style="-fx-background-color: gold;" text="Qty" />
+            <TableColumn fx:id="InventoryidColumn" prefWidth="102.39996337890625" style="-fx-background-color: gold;" text="Inventory id" />
+        </columns>
+      </TableView>
+      <Button fx:id="ResetButton" layoutX="76.0" layoutY="326.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #FFBF00#FFBF00#FFBF00;" text="Reset">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="GoToDashBoardButton" layoutX="571.0" layoutY="560.0" mnemonicParsing="false" onAction="#GoToDashBoardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="577.0" layoutY="14.0">
+         <image>
+            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="DeleteButton" layoutX="210.0" layoutY="326.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #FFBF00#FFBF00#FFBF00;" text="Delete">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="UpdateButton" layoutX="365.0" layoutY="326.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #FFBF00#FFBF00#FFBF00;" text="Update">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="516.0" layoutY="326.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #FFBF00#FFBF00#FFBF00;" text="Save">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="TitleLabel" alignment="CENTER" layoutX="32.0" layoutY="101.0" prefHeight="39.0" prefWidth="666.0" text="Product !!">
+         <font>
+            <Font name="Mongolian Baiti" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.54" />
+         </effect>
+      </Label>
+      <ComboBox fx:id="InventoryidCombobox" layoutX="256.0" layoutY="286.0" prefHeight="26.0" prefWidth="364.0" style="-fx-background-color: gold;" />
+      <TextField fx:id="PriceTextfield" layoutX="255.0" layoutY="226.0" prefHeight="26.0" prefWidth="364.0" promptText="Enter price here" style="-fx-background-color: gold; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="InventoryidLabel" layoutX="117.0" layoutY="291.0" text="Inventory id : ">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="NameTextfield" layoutX="256.0" layoutY="197.0" prefHeight="26.0" prefWidth="364.0" promptText="Enter name here" style="-fx-background-color: gold; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="proid" layoutX="256.0" layoutY="173.0" text="Pro001">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="ProductidLabel" layoutX="117.0" layoutY="173.0" text="Product id :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="NameLabel" layoutX="117.0" layoutY="201.0" text="Name : ">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="PriceLabel" layoutX="117.0" layoutY="230.0" text="Price : ">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="QtyTextfield" layoutX="256.0" layoutY="256.0" prefHeight="26.0" prefWidth="364.0" promptText="Enter qty here" style="-fx-background-color: gold; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="QtyLabel" layoutX="119.0" layoutY="260.0" text="QTY :">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

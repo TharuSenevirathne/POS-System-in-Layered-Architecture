@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Warehouse">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.86">
+         <image>
+            <Image url="@../assests/istockphoto-1334396511-612x612.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="WarehouseTable" layoutX="85.0" layoutY="364.0" onMouseClicked="#WarehouseOnMouseClicked" prefHeight="178.0" prefWidth="526.0" style="-fx-background-color: #C3B49D;">
+        <columns>
+          <TableColumn fx:id="warehouseidColumn" prefWidth="163.20001983642578" style="-fx-background-color: #C3B49D;" text="Warehouse id" />
+          <TableColumn fx:id="nameColumn" prefWidth="180.0" style="-fx-background-color: #C3B49D;" text="Name" />
+            <TableColumn fx:id="LocationColumn" prefWidth="182.40005493164062" style="-fx-background-color: #C3B49D;" text="Location" />
+        </columns>
+      </TableView>
+      <Button fx:id="ResetButton" layoutX="85.0" layoutY="325.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #B09E89;" text="Reset">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="GoToDashboardButton" layoutX="571.0" layoutY="560.0" mnemonicParsing="false" onAction="#GoToDashboardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="DeleteButton" layoutX="222.0" layoutY="325.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #B09E89;" text="Delete">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="UpdateButton" layoutX="360.0" layoutY="325.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #B09E89;" text="Update">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="496.0" layoutY="325.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #B09E89;" text="Save">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="LocationTextfield" layoutX="273.0" layoutY="287.0" prefHeight="26.0" prefWidth="337.0" promptText="Enter location here" style="-fx-background-color: #B09E89; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="TitleLabel" alignment="CENTER" layoutX="9.0" layoutY="141.0" prefHeight="18.0" prefWidth="682.0" text="Warehouse !!" textFill="#0b0a0a">
+         <font>
+            <Font name="Mongolian Baiti" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.66" />
+         </effect>
+      </Label>
+      <Label fx:id="LocationLabel" layoutX="128.0" layoutY="291.0" text="Location : " textFill="#080707">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="NameTextfield" layoutX="273.0" layoutY="254.0" prefHeight="26.0" prefWidth="337.0" promptText="Enter name here" style="-fx-background-color: #B09E89; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="NameLabel" layoutX="128.0" layoutY="258.0" text="Name : " textFill="#100e0e">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="WarehouseidLabel" layoutX="128.0" layoutY="225.0" text="Warehouse id :" textFill="#151313">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="warehouseid" layoutX="273.0" layoutY="225.0" text="Ware001" textFill="#181616">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="582.0" layoutY="9.0">
+         <image>
+            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Customer">
+   <children>
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.96">
+         <image>
+            <Image url="@../assests/pexels-photo-6956924.jpeg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="CustomerTable" layoutX="54.0" layoutY="397.0" onMouseClicked="#CustomerTableOnMouseClicked" prefHeight="151.0" prefWidth="595.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn fx:id="CustomeridColumn" prefWidth="75.0" style="-fx-background-color: white;" text="Customer id" />
+          <TableColumn fx:id="NameColumn" prefWidth="91.20001220703125" style="-fx-background-color: white;" text="Name" />
+            <TableColumn fx:id="AddressColumn" prefWidth="92.79998779296875" style="-fx-background-color: white;" text="Address" />
+            <TableColumn fx:id="PhoneNoColumn" prefWidth="84.79998779296875" style="-fx-background-color: white;" text="Phone No" />
+            <TableColumn fx:id="EmailColumn" prefWidth="78.39999389648438" style="-fx-background-color: white;" text="Email" />
+            <TableColumn fx:id="TypeColumn" prefWidth="89.5999755859375" style="-fx-background-color: white;" text="Type" />
+            <TableColumn fx:id="EmployeeidColumn" prefWidth="81.60002441406255" style="-fx-background-color: white;" text="Employee id" />
+        </columns>
+      </TableView>
+      <Button fx:id="DashboardButton" layoutX="568.0" layoutY="561.0" mnemonicParsing="false" onAction="#DashboardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="ReportButton" layoutX="89.0" layoutY="357.0" mnemonicParsing="false" onAction="#ReportOnAction" prefHeight="26.0" prefWidth="255.0" style="-fx-background-color: #06081F;" text="All Customer Reports" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="521.0" layoutY="319.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="UpdateButton" layoutX="370.0" layoutY="319.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="DeleteButton" layoutX="227.0" layoutY="319.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="ResetButton" layoutX="86.0" layoutY="319.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="TitleLabel" alignment="CENTER" layoutX="30.0" layoutY="69.0" prefHeight="40.0" prefWidth="595.0" text="Customer !!" textFill="WHITE">
+         <font>
+            <Font name="Mongolian Baiti" size="36.0" />
+         </font>
+         <effect>
+            <Glow level="0.6" />
+         </effect></Label>
+      <Button fx:id="SendMailButton" layoutX="359.0" layoutY="357.0" mnemonicParsing="false" onAction="#SendMailOnAction" prefHeight="26.0" prefWidth="255.0" style="-fx-background-color: #06081F;" text="Send Mail" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="CustomeridLabel" layoutX="93.0" layoutY="140.0" text="Customer id : " textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="Employeeid" layoutX="373.0" layoutY="141.0" text="Employee id :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="AddressLabel" layoutX="92.0" layoutY="212.0" text="Address :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="TypeLabel" layoutX="91.0" layoutY="261.0" text="Type :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="PhoneNoLabel" layoutX="375.0" layoutY="257.0" text="Phone No :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="PhoneNoTextfield" layoutX="373.0" layoutY="284.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your contact number here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="EmailTextfield" layoutX="371.0" layoutY="225.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your email here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="AddressTextfield" layoutX="89.0" layoutY="232.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your address here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="TypeTextfield" layoutX="89.0" layoutY="284.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your type = &quot;Delivery&quot; / &quot;NonDelivery&quot;" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="EmailLabel" layoutX="373.0" layoutY="199.0" text="Email : " textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font></Label>
+      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="581.0" layoutY="10.0">
+         <image>
+            <Image url="@../Images/Annotation 2024-12-13 023733.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="EmployeeidComboBox" layoutX="371.0" layoutY="167.0" onAction="#EmployeeidOnAction" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #070824;" />
+      <Label fx:id="custidLabel" layoutX="236.0" layoutY="142.0" text="C001 " textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="NameLabel" layoutX="94.0" layoutY="163.0" text="Name :" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="NameTextfield" layoutX="92.0" layoutY="183.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your name here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+   </children>
+</AnchorPane>
