@@ -5,6 +5,7 @@ import com.example.lihini_electrical.controller.Orders;
 import com.example.lihini_electrical.dao.DAOFactory;
 import com.example.lihini_electrical.dao.custom.OrdersDAO;
 import com.example.lihini_electrical.dao.custom.SupplierDAO;
+import com.example.lihini_electrical.dto.OrdersAndProductDetailsDTO;
 import com.example.lihini_electrical.dto.OrdersDTO;
 import com.example.lihini_electrical.dto.SupplierDTO;
 import com.example.lihini_electrical.entity.Supplier;
@@ -21,15 +22,11 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public ArrayList<String> getAllOrderIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> orderIds = new ArrayList<>();
-        ordersDAO.getAll();
-        return orderIds;
+        return ordersDAO.getAllIds();
     }
 
-    public OrdersDTO searchOrder(String selectedOrderId) throws SQLException, ClassNotFoundException {
-        Orders orders = ordersDAO.search(selectedOrderId);
-        OrdersDTO ordersDTO = new OrdersDTO();
-        return ordersDTO;
+    public Orders searchOrder(String selectedOrderId) throws SQLException, ClassNotFoundException {
+        return ordersDAO.search(selectedOrderId);
     }
 
     @Override
@@ -38,10 +35,31 @@ public class OrdersBOImpl implements OrdersBO {
     }
 
     @Override
-    public boolean saveOrder(OrdersDTO orderDTO) {
-        return ordersDAO.save(new Orders(orderDTO.getOrderId(),orderDTO.getCustomerId(),orderDTO.getDate(),
-                orderDTO.getOrdersAndProductDetailsDTOS()));
+    public boolean saveOrder(OrdersDTO orderDTO) throws SQLException, ClassNotFoundException {
+        ArrayList<OrdersDTO> orderDetailsList = new ArrayList<>();
+
+        for (OrdersAndProductDetailsDTO dto : orderDTO.getOrdersAndProductDetailsDTOS()) {
+            OrderDetails orderDetails = new OrderDetails(
+                    dto.getProductId(),
+                    dto.getProductname(),
+                    dto.getCartQuantity(),
+                    dto.getUnitPrice(),
+                    dto.getTotal(),
+                    dto.getCustomerId()
+            );
+            orderDetailsList.add(orderDetails);
+        }
+
+        Orders order = new Orders(
+                orderDTO.getOrderId(),
+                orderDTO.getCustomerId(),
+                orderDTO.getDate(),
+                orderDetailsList
+        );
+
+        return ordersDAO.save(order);
     }
+
 
     @Override
     public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {

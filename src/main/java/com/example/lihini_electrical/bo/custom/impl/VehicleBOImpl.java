@@ -17,9 +17,7 @@ public class VehicleBOImpl implements VehicleBO {
 
     @Override
     public ArrayList<String> getAllVehicleIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> vehicleIds = new ArrayList<>();
-         vehicleDAO.getAll();
-        return vehicleIds;
+        return vehicleDAO.getAllIds();
     }
 
     @Override

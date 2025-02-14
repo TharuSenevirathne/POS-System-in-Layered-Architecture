@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class WarehouseBOImpl implements WarehouseBO {
     WarehouseDAO warehouseDAO = (WarehouseDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.WAREHOUSE);
-    SupplierDAO supplierDAO = (SupplierDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUPPLIER);
 
     @Override
     public ArrayList<WarehouseDTO> getAllWarehouses() throws SQLException, ClassNotFoundException {
@@ -57,41 +56,4 @@ public class WarehouseBOImpl implements WarehouseBO {
         return warehouseDAO.update(new Warehouse(warehouseDTO.getWarehouseId(),warehouseDTO.getName(),
                 warehouseDTO.getLocation()));    }
 
-    @Override
-    public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {
-        ArrayList<SupplierDTO> allSuppliers = new ArrayList<>();
-        ArrayList<Supplier> supplierDTOS = supplierDAO.getAll();
-
-        ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
-
-        for (Supplier supplierDTO : supplierDTOS) {
-             allSuppliers.add(new SupplierDTO(supplierDTO.getSupplierId(),
-                     supplierDTO.getName(),
-                     supplierDTO.getBrand(),
-                     supplierDTO.getPhoneNo()));
-        }
-        return allSuppliers;
-    }
-
-    @Override
-    public String generateSupplierId() throws SQLException, ClassNotFoundException {
-        String nextSupplierId = supplierDAO.generateId();
-        return nextSupplierId;
-    }
-
-    @Override
-    public boolean deleteSupplier(String supplierId) throws SQLException, ClassNotFoundException {
-        return warehouseDAO.delete(supplierId);
-    }
-
-    @Override
-    public boolean saveSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
-        return supplierDAO.save(new Supplier(supplierDTO.getSupplierId(),supplierDTO.getName(),
-                supplierDTO.getBrand(),supplierDTO.getPhoneNo()));
-    }
-
-    @Override
-    public boolean updateSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
-        return supplierDAO.update(new Supplier(supplierDTO.getSupplierId(),supplierDTO.getName(),
-                supplierDTO.getBrand(),supplierDTO.getPhoneNo()));    }
 }

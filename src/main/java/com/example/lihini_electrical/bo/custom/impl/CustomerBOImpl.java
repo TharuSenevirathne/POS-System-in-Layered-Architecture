@@ -55,9 +55,7 @@ public class  CustomerBOImpl implements CustomerBO {
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> customerIds = new ArrayList<>();
-        customerDAO.getAll();
-        return customerIds;
+        return customerDAO.getAllIds();
     }
 
     @Override

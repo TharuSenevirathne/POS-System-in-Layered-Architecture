@@ -57,9 +57,7 @@ public class ProductBOImpl implements ProductBO {
 
     @Override
     public ArrayList<String> getAllProductIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> productIds = new ArrayList<>();
-        productDAO.getAll();
-        return productIds;
+        return productDAO.getAllIds();
     }
 
     @Override

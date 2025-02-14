@@ -340,7 +340,7 @@ public class Orders implements Initializable {
     @FXML
     void ProductidComboboxOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String selectedProductId = ProductidCombobox.getSelectionModel().getSelectedItem();
-        ProductDTO productDTO = productBO.findById(selectedProductId);
+        ProductDTO productDTO = productBO.search(selectedProductId);
 
         if (productDTO != null) {
             ProductName.setText(productDTO.getName());
