@@ -2,6 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.impl.custom.SupplierDAO;
+import com.example.lihini_electrical.entity.Delivery;
 import com.example.lihini_electrical.entity.Supplier;
 
 import java.sql.ResultSet;

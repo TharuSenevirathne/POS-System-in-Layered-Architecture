@@ -253,7 +253,7 @@ public class Delivery implements Initializable {
     @FXML
     void VehicleidCombobox(ActionEvent event) throws SQLException, ClassNotFoundException {
         String selectedVehicleId = VehicleidCombobox.getSelectionModel().getSelectedItem();
-        VehicleDTO vehicleDTO = vehicleBO.findById(selectedVehicleId);
+        VehicleDTO vehicleDTO = vehicleBO.searchVehicle(selectedVehicleId);
 
         if (vehicleDTO != null) {
             System.out.println(" ");

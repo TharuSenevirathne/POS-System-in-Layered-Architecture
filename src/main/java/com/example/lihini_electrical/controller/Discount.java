@@ -185,7 +185,7 @@ public class Discount implements Initializable {
     @FXML
     void OrderidComboboxOnAction(ActionEvent event) throws SQLException,ClassNotFoundException {
         String selectedOrderId = OrderidComboBox.getSelectionModel().getSelectedItem();
-        OrdersDTO ordersDTO = ordersBO.searchOrder(selectedOrderId);
+        Orders ordersDTO = ordersBO.searchOrder(selectedOrderId);
 
         if (ordersDTO != null) {
             System.out.println(" ");

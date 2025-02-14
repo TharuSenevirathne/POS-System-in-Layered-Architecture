@@ -6,6 +6,7 @@ import com.example.lihini_electrical.dao.DAOFactory;
 import com.example.lihini_electrical.dao.custom.OrdersDAO;
 import com.example.lihini_electrical.dao.custom.SupplierDAO;
 import com.example.lihini_electrical.dto.OrdersAndProductDetailsDTO;
+import com.example.lihini_electrical.entity.OrdersAndProductDetails;
 import com.example.lihini_electrical.dto.OrdersDTO;
 import com.example.lihini_electrical.dto.SupplierDTO;
 import com.example.lihini_electrical.entity.Supplier;
@@ -36,29 +37,22 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public boolean saveOrder(OrdersDTO orderDTO) throws SQLException, ClassNotFoundException {
-        ArrayList<OrdersDTO> orderDetailsList = new ArrayList<>();
+        ArrayList<OrdersAndProductDetails> ordersAndProductDetails = new ArrayList<>();
 
-        for (OrdersAndProductDetailsDTO dto : orderDTO.getOrdersAndProductDetailsDTOS()) {
-            OrderDetails orderDetails = new OrderDetails(
+        for (OrdersAndProductDetailsDTO dto :  ordersAndProductDetails()) {
+            OrdersAndProductDetails orderDetails = new OrdersAndProductDetails(
+                    dto.getOrderId(),
                     dto.getProductId(),
-                    dto.getProductname(),
                     dto.getCartQuantity(),
-                    dto.getUnitPrice(),
-                    dto.getTotal(),
-                    dto.getCustomerId()
+                    dto.getUnitprice()
             );
-            orderDetailsList.add(orderDetails);
+            ordersAndProductDetails.add(orderDetails);
         }
 
-        Orders order = new Orders(
-                orderDTO.getOrderId(),
-                orderDTO.getCustomerId(),
-                orderDTO.getDate(),
-                orderDetailsList
-        );
 
-        return ordersDAO.save(order);
+        return ordersDAO.save(orderDTO);
     }
+
 
 
     @Override

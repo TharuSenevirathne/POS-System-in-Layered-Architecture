@@ -138,9 +138,7 @@ public class Orders implements Initializable {
 
     OrdersBO ordersBO = (OrdersBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ORDERS);
     ProductBO productBO = (ProductBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCT);
-    DeliveryBO deliveryBO = (DeliveryBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.DELIVERY);
     CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
-    PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
 
     private final ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
 
@@ -301,7 +299,7 @@ public class Orders implements Initializable {
         }
 
         String orderId = orderid.getText();
-        Date dateOfOrder = Date.valueOf(DateTextfield.getValue());/*................*/
+        Date dateOfOrder = Date.valueOf(DateTextfield.getValue());
         String customerId = CustomeridCombobox.getValue();
 
         ArrayList<OrdersAndProductDetailsDTO> ordersAndProductDetailsDTOS = new ArrayList<>();

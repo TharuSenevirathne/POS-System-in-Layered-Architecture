@@ -3,6 +3,7 @@ package com.example.lihini_electrical.dao.custom.impl.custom.impl;
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.impl.custom.CustomerDAO;
 import com.example.lihini_electrical.entity.Customer;
+import com.example.lihini_electrical.entity.Delivery;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +37,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
+    public boolean save(Delivery customer) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("insert into Customer values (?,?,?,?,?,?,?)",
                 customer.getCustomerId(),
                 customer.getName(),

@@ -189,9 +189,9 @@ public class Department implements Initializable {
     }
 
     @FXML
-    void EmployeeidOnAction(ActionEvent event) throws SQLException {
+    void EmployeeidOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String selectedEmployeeId = empidComboBox.getSelectionModel().getSelectedItem();
-        EmployeeDTO employeeDTO = employeeBO.findById(selectedEmployeeId);
+        EmployeeDTO employeeDTO = employeeBO.searchEmployee(selectedEmployeeId);
 
         if (employeeDTO != null) {
 
