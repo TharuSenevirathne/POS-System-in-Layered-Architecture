@@ -38,11 +38,6 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
     @Override
-    public boolean delete(String supplierId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Supplier where sup_id=?", supplierId);
-    }
-
-    @Override
     public boolean save(Supplier supplier) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("insert into Supplier values (?,?,?,?)",
                 supplier.getSupplierId(),
@@ -61,6 +56,11 @@ public class SupplierDAOImpl implements SupplierDAO {
         );    }
 
     @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute("delete from Supplier where sup_id=?", id);
+    }
+
+    @Override
     public Supplier search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
@@ -70,13 +70,4 @@ public class SupplierDAOImpl implements SupplierDAO {
         return null;
     }
 
-    @Override
-    public ArrayList<Supplier> getAllSuppliers() throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public String getNextSupplierId() throws SQLException, ClassNotFoundException {
-        return "";
-    }
 }

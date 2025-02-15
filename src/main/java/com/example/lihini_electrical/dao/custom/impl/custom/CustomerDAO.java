@@ -7,10 +7,5 @@ import com.example.lihini_electrical.entity.Delivery;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CustomerDAO extends CrudDAO {
-    ArrayList<Customer> getAllCustomers() throws SQLException, ClassNotFoundException;
-    String getNextCustomerId() throws SQLException, ClassNotFoundException;
-    boolean save(Delivery customer) throws SQLException, ClassNotFoundException;
-    boolean delete(String customerId) throws SQLException,ClassNotFoundException;
-    boolean update(Customer customer) throws SQLException, ClassNotFoundException;
+public interface CustomerDAO extends CrudDAO<Customer> {
 }

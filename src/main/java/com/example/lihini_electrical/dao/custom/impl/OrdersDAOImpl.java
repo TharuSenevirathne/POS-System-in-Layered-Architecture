@@ -2,9 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.OrdersDAO;
-import com.example.lihini_electrical.dto.OrdersDTO;
 import com.example.lihini_electrical.entity.Orders;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,17 +10,11 @@ import java.util.ArrayList;
 public class OrdersDAOImpl implements OrdersDAO {
 
     @Override
-    public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-
-    @Override
     public Orders search(String selectedOrderId) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("select * from Orders where ord_id=?", selectedOrderId);
 
         if (rst.next()) {
-            return new OrdersDTO(
+            return new Orders(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getDate(3)
@@ -67,6 +59,16 @@ public class OrdersDAOImpl implements OrdersDAO {
                 dto.getCustomerId(),
                 dto. getDate()
         );
+    }
+
+    @Override
+    public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public boolean update(com.example.lihini_electrical.controller.Orders dto) throws SQLException, ClassNotFoundException {
+        return false;
     }
 
     @Override

@@ -19,7 +19,6 @@ public class SupplierBOImpl implements SupplierBO {
     public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {
         ArrayList<SupplierDTO> suppliers = new ArrayList<>();
         ArrayList<Supplier> suppliers1 = supplierDAO.getAll();
-        ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
 
         for (Supplier supplier : suppliers1) {
             suppliers.add(new SupplierDTO(supplier.getSupplierId(),
