@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -134,7 +135,8 @@ public class Product implements Initializable {
     }
 
     private void loadInventoryIds() throws SQLException,ClassNotFoundException {
-        String inventoryIds = inventoryBO.getAllInventoryIds();
+
+        ArrayList<String> inventoryIds = inventoryBO.getAllInventoryIds();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(inventoryIds);
         InventoryidCombobox.setItems(observableList);

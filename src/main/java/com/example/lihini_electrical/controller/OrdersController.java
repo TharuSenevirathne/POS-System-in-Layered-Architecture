@@ -23,7 +23,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class Orders implements Initializable {
+public class OrdersController implements Initializable {
 
     @FXML
     private AnchorPane MainAnchorpane;

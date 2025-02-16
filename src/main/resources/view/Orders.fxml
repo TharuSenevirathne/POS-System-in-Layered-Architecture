@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Orders">
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.OrdersController">
    <children>
       <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.82">
          <image>

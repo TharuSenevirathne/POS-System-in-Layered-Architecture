@@ -2,6 +2,7 @@ package com.example.lihini_electrical.bo.custom.impl;
 
 import com.example.lihini_electrical.bo.BOFactory;
 import com.example.lihini_electrical.bo.custom.PaymentBO;
+import com.example.lihini_electrical.dao.DAOFactory;
 import com.example.lihini_electrical.dao.custom.PaymentDAO;
 import com.example.lihini_electrical.dto.PaymentDTO;
 import com.example.lihini_electrical.entity.Payment;
@@ -13,7 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaymentBOImpl implements PaymentBO {
-    PaymentDAO paymentDAO = (PaymentDAO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
+
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
 
     @Override
     public ArrayList<PaymentDTO> getAllPayments() throws SQLException, ClassNotFoundException {

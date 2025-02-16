@@ -3,7 +3,6 @@ package com.example.lihini_electrical.dao.custom.impl;
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.CustomerDAO;
 import com.example.lihini_electrical.entity.Customer;
-import com.example.lihini_electrical.entity.Delivery;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,9 +15,9 @@ public class CustomerDAOImpl implements CustomerDAO {
         ArrayList<Customer> customers = new ArrayList<>();
 
         while (rst.next()) {
-            Customer  entity = new Customer(rst.getString("customer id"),rst.getString("name"),
-                    rst.getString("address"),rst.getString("phone no"),rst.getString("email"),
-                    rst.getString("type"),rst.getString("employee id"));
+            Customer  entity = new Customer(rst.getString(1),rst.getString(2),
+                    rst.getString(3),rst.getString(4),rst.getString(5),
+                    rst.getString(6),rst.getString(7));
             customers.add(entity);
         }
         return customers;
@@ -72,8 +71,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select cust_id  from Customer");
 
+        ResultSet rst = SQLUtil.execute("select cust_id  from Customer");
         ArrayList<String> customerIds = new ArrayList<>();
 
         while (rst.next()) {

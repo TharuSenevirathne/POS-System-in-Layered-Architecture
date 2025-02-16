@@ -1,16 +1,13 @@
 package com.example.lihini_electrical.bo.custom.impl;
 
 import com.example.lihini_electrical.bo.custom.OrdersBO;
-import com.example.lihini_electrical.controller.Orders;
 import com.example.lihini_electrical.dao.DAOFactory;
 import com.example.lihini_electrical.dao.custom.OrdersDAO;
-import com.example.lihini_electrical.dao.custom.SupplierDAO;
-import com.example.lihini_electrical.dto.OrdersAndProductDetailsDTO;
-import com.example.lihini_electrical.entity.OrdersAndProductDetails;
+import com.example.lihini_electrical.db.DBConnection;
 import com.example.lihini_electrical.dto.OrdersDTO;
+import com.example.lihini_electrical.entity.Orders;
 
-
-
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,9 +19,7 @@ public class OrdersBOImpl implements OrdersBO {
         return ordersDAO.getAllIds();
     }
 
-    public Orders searchOrder(String selectedOrderId) throws SQLException, ClassNotFoundException {
-        return ordersDAO.search(selectedOrderId);
-    }
+
 
     @Override
     public String generateOrderId() throws SQLException, ClassNotFoundException {
@@ -33,20 +28,25 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public boolean saveOrder(OrdersDTO orderDTO) throws SQLException, ClassNotFoundException {
-        ArrayList<OrdersAndProductDetails> ordersAndProductDetails = new ArrayList<>();
+        Connection connection = DBConnection.getDbConnection().getConnection();
+        try {
+            connection.setAutoCommit(false);
 
-        for (OrdersAndProductDetailsDTO dto :  ordersAndProductDetails1) {
-            OrdersAndProductDetails orderDetails = new OrdersAndProductDetails(
-                    dto.getOrderId(),
-                    dto.getProductId(),
-                    dto.getCartQuantity(),
-                    dto.getUnitprice()
-            );
-            ordersAndProductDetails.add(orderDetails);
+            boolean isOrderSaved = ordersDAO.save(new Orders(orderDTO.getOrderId(),orderDTO.getCustomerId(),orderDTO.getDate()));
+            if (isOrderSaved) {
+                boolean isOrderDetailListSaved = ordersDAO.save(orderDTO.getOrderDetailsDTOS());
+                if (isOrderDetailListSaved) {
+                    connection.commit();
+                    return true;
+                }
+            }
+            connection.rollback();
+            return false;
+        } catch (Exception e) {
+            connection.rollback();
+            return false;
+        } finally {
+            connection.setAutoCommit(true);
         }
-
-
-        return ordersDAO.save(orderDTO);
     }
-
 }

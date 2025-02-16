@@ -2,7 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.InventoryDAO;
-import com.example.lihini_electrical.entity.Delivery;
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Inventory;
 
 import java.sql.ResultSet;
@@ -66,7 +66,13 @@ public class InventoryDAOImpl implements InventoryDAO {
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Inventory");
+        ArrayList<String> inventories = new ArrayList<>();
+
+        while (rst.next()) {
+            inventories.add(rst.getString("in_id"));
+        }
+        return inventories;
     }
 
 }

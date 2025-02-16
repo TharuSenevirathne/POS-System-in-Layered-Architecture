@@ -30,10 +30,10 @@ public class DeliveryDAOImpl implements DeliveryDAO {
         ArrayList<Delivery> deliveries = new ArrayList<>();
 
         while (rst.next()) {
-            Delivery entity = new Delivery(rst.getString("delivery id"),
-                    rst.getString("address"),
-                    rst.getDate("date"),
-                    rst.getString("vehicle id"));
+            Delivery entity = new Delivery(rst.getString(1),
+                    rst.getString(2),
+                    rst.getDate(3),
+                    rst.getString(4));
             deliveries.add(entity);
         }
         return deliveries;

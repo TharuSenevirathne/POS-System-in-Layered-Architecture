@@ -2,12 +2,9 @@ package com.example.lihini_electrical.bo.custom.impl;
 
 import com.example.lihini_electrical.bo.custom.SupplierBO;
 import com.example.lihini_electrical.dao.DAOFactory;
-import com.example.lihini_electrical.dao.custom.impl.custom.SupplierDAO;
+import com.example.lihini_electrical.dao.custom.SupplierDAO;
 import com.example.lihini_electrical.dto.SupplierDTO;
 import com.example.lihini_electrical.entity.Supplier;
-import com.example.lihini_electrical.tdm.SupplierTM;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

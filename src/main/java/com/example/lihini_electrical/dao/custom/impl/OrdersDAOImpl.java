@@ -66,12 +66,7 @@ public class OrdersDAOImpl implements OrdersDAO {
         return null;
     }
 
-    @Override
-    public boolean update(com.example.lihini_electrical.controller.Orders dto) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
+        @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return false;
     }

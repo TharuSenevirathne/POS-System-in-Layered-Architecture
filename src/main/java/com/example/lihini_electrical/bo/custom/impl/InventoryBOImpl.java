@@ -52,8 +52,8 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public String getAllInventoryIds() throws SQLException, ClassNotFoundException {
-        String nextInventorytId = String.valueOf(inventoryDAO.getAllIds());
+    public ArrayList<String> getAllInventoryIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> nextInventorytId = inventoryDAO.getAllIds();
         return nextInventorytId;
     }
 }

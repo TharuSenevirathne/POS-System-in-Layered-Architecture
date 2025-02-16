@@ -1,5 +1,6 @@
 package com.example.lihini_electrical.dto;
 
+import com.example.lihini_electrical.entity.Orders;
 import lombok.*;
 
 import java.sql.Date;
@@ -22,5 +23,10 @@ public class OrdersDTO {
         this.orderId = string;
         this.customerId = string1;
         this.date = date;
+    }
+
+    public Orders getOrderDetailsDTOS() {
+
+        return null;
     }
 }

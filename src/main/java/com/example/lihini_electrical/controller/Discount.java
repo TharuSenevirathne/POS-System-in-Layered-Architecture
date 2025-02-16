@@ -5,6 +5,7 @@ import com.example.lihini_electrical.bo.custom.DiscountBO;
 import com.example.lihini_electrical.bo.custom.OrdersBO;
 import com.example.lihini_electrical.dto.DiscountDTO;
 import com.example.lihini_electrical.dto.OrdersDTO;
+import com.example.lihini_electrical.entity.Orders;
 import com.example.lihini_electrical.tdm.DiscountTM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -184,12 +186,21 @@ public class Discount implements Initializable {
 
     @FXML
     void OrderidComboboxOnAction(ActionEvent event) throws SQLException,ClassNotFoundException {
-        String selectedOrderId = OrderidComboBox.getSelectionModel().getSelectedItem();
-        Orders ordersDTO = ordersBO.searchOrder(selectedOrderId);
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        ArrayList<String> list = ordersBO.getAllOrderIds();
 
-        if (ordersDTO != null) {
-            System.out.println(" ");
+        for (String orderId : list) {
+            observableList.add(orderId);
         }
+        OrderidComboBox.setItems(observableList);
+
+
+//        String selectedOrderId = OrderidComboBox.getSelectionModel().getSelectedItem();
+//        Orders ordersDTO = ordersBO.generateOrderId(selectedOrderId);
+//
+//        if (ordersDTO != null) {
+//            System.out.println(" ");
+//        }
     }
 
     @FXML
