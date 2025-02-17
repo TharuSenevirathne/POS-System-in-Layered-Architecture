@@ -436,7 +436,7 @@ public class Customer implements Initializable {
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(
                     getClass()
-                            .getResourceAsStream("/report/orderdetails.jrxml"
+                            .getResourceAsStream("/reports/orderdetails.jrxml"
                             ));
 
             Connection connection = DBConnection.getDbConnection().getConnection();
@@ -475,7 +475,7 @@ public class Customer implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Send email");
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/images (1).jpeg")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/assests/Annotation 2024-12-13 023733.png")));
 
             stage.initModality(Modality.APPLICATION_MODAL);
 
