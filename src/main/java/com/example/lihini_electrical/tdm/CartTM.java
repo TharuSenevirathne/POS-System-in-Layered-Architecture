@@ -15,5 +15,5 @@ public class CartTM {
     private double unitPrice;
     private double total;
     private String customerId;
-    private Button remove;
+    private Button removeBtn;
 }

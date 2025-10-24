@@ -15,7 +15,8 @@ public class ProductDAOImpl implements ProductDAO {
         ResultSet rst = SQLUtil.execute("select * from Product");
         ArrayList<Product> productDTOS = new ArrayList<>();
         while (rst.next()) {
-            productDTOS.add(new Product(rst.getString(1),
+            productDTOS.add(new Product(
+                    rst.getString(1),
                     rst.getString(2),
                     rst.getDouble(3),
                     rst.getString(4),
@@ -26,7 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select pro_id  from Product order by pro_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select product_id   from Product order by product_id   desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -40,7 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public boolean delete(String productId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Product where pro_id =?", productId);
+        return SQLUtil.execute("delete from Product where product_id  =?", productId);
     }
 
     @Override
@@ -55,17 +56,17 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public boolean update(Product product) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Product set pro_name =? ,Qty  =? ,pro_quantity,in_id =? where pro_id =?",
-                product.getProductId(),
+        return SQLUtil.execute( "update Product set name =? ,price  =? ,quantity =? ,inventory_id =? where product_id  =?",
                 product.getName(),
                 product.getPrice(),
                 product.getQuantity(),
-                product.getInventoryId()
+                product.getInventoryId(),
+                product.getProductId()
         );    }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select pro_id from Product");
+        ResultSet rst = SQLUtil.execute("select product_id  from Product");
         ArrayList<String> productIds = new ArrayList<>();
         while (rst.next()) {
             productIds.add(rst.getString(1));
@@ -75,13 +76,13 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public Product search(String selectedProductId) throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select * from Product where pro_id=?", selectedProductId);
+        ResultSet rst = SQLUtil.execute("select * from Product where product_id =?", selectedProductId);
 
         rst.next();
-        return new Product( rst.getString("product id"),
+        return new Product( rst.getString("product_id"),
                 rst.getString("name"),
                 rst.getDouble("price"),
-                rst.getString("inventoryId"),
+                rst.getString("inventory_id"),
                 rst.getString("quantity"));
         }
 }

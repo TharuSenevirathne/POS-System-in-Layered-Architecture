@@ -2,6 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.DepartmentDAO;
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Department;
 
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select dep_id   from Department order by dep_id   desc limit 1");
+        ResultSet rst = SQLUtil.execute("select department_id   from Department order by department_id   desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -35,7 +36,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public boolean delete(String departmentId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Department where dep_id=?", departmentId);
+        return SQLUtil.execute("delete from Department where department_id=?", departmentId);
     }
 
     @Override
@@ -49,20 +50,30 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public boolean update(Department department) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Department set dep_name =? emp_id=? where dep_id=?",
-                department.getDepartmentid(),
+        return SQLUtil.execute( "update Department set name =?  employee_id=? where department_id=?",
                 department.getName(),
-                department.getEmployeeid()
+                department.getEmployeeid(),
+                department.getDepartmentid()
         );
     }
 
     @Override
     public Department search(String id) throws SQLException, ClassNotFoundException {
-        return null;
-    }
+        ResultSet rst = SQLUtil.execute("select * from Department where department_id=?", id);
+        rst.next();
+        return new Department(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getString(3)
+        );    }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
-    }
+        ResultSet rst = SQLUtil.execute("select department_id  from Department");
+        ArrayList<String> departmentIds = new ArrayList<>();
+
+        while (rst.next()) {
+            departmentIds.add(rst.getString(1));
+        }
+        return departmentIds;    }
 }

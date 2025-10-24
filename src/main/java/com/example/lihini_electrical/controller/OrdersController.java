@@ -1,8 +1,13 @@
 package com.example.lihini_electrical.controller;
 
 import com.example.lihini_electrical.bo.BOFactory;
-import com.example.lihini_electrical.bo.custom.*;
-import com.example.lihini_electrical.dto.*;
+import com.example.lihini_electrical.bo.custom.CustomerBO;
+import com.example.lihini_electrical.bo.custom.OrdersBO;
+import com.example.lihini_electrical.bo.custom.ProductBO;
+import com.example.lihini_electrical.dto.CustomerDTO;
+import com.example.lihini_electrical.dto.OrdersAndProductDetailsDTO;
+import com.example.lihini_electrical.dto.OrdersDTO;
+import com.example.lihini_electrical.dto.ProductDTO;
 import com.example.lihini_electrical.tdm.CartTM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,127 +30,35 @@ import java.util.ResourceBundle;
 
 public class OrdersController implements Initializable {
 
-    @FXML
-    private AnchorPane MainAnchorpane;
+    @FXML private AnchorPane MainAnchorpane;
+    @FXML private ImageView MainImageview;
+    @FXML private ImageView LogoImageview;
+    @FXML private Label CustomerName;
+    @FXML private Label orderid;
+    @FXML private DatePicker DateTextfield;
+    @FXML private TextField QTYTextfield;
+    @FXML private TextField QTYOnHandTextField;
+    @FXML private Label ProductName;
+    @FXML private Label UnitPrice;
+    @FXML private ComboBox<String> ProductidCombobox;
+    @FXML private ComboBox<String> CustomeridCombobox;
+    @FXML private TableView<CartTM> OrdersTable;
+    @FXML private TableColumn<CartTM, String> productidColumn;
+    @FXML private TableColumn<CartTM, String> nameColumn;
+    @FXML private TableColumn<CartTM, Integer> cartQtyColumn;
+    @FXML private TableColumn<CartTM, Double> unitPricecolumn;
+    @FXML private TableColumn<CartTM, Double> totalColumn;
+    @FXML private TableColumn<?, ?> actionColumn;
 
-    @FXML
-    private ImageView MainImageview;
-
-    @FXML
-    private ImageView LogoImageview;
-
-    @FXML
-    private Label CustomeridLabel;
-
-    @FXML
-    private Label DateLabel;
-
-    @FXML
-    private Label CustomerName;
-
-    @FXML
-    private Label CustomerNameLabel;
-
-    @FXML
-    private Label ProductIdLabel;
-
-    @FXML
-    private Label ProductName;
-
-    @FXML
-    private Label DeliveryidLabel;
-
-    @FXML
-    private Label orderid;
-
-    @FXML
-    private Label OrderidLabel;
-
-    @FXML
-    private Label PaymentidLabel;
-
-    @FXML
-    private Label TiTleLabel;
-
-    @FXML
-    private Label ProductNameLabel;
-
-    @FXML
-    private Label UnitPrice;
-
-    @FXML
-    private Label UnitPriceLabel;
-
-    @FXML
-    private Label TotalPriceLabel;
-
-    @FXML
-    private Label StatusLabel;
-
-    @FXML
-    private DatePicker DateTextfield;
-
-    @FXML
-    private Label QTYLabel;
-
-    @FXML
-    private Label QTYOnHand;
-
-    @FXML
-    private Label QTYOnHandLabel;
-
-    @FXML
-    private TextField QTYTextfield;
-
-    @FXML
-    private Button GoToDashboardButton;
-
-    @FXML
-    private Button PlaceOrderButton;
-
-    @FXML
-    private Button AddToCartButton;
-
-    @FXML
-    private Button ResetButton;
-
-    @FXML
-    private ComboBox<String> ProductidCombobox;
-
-    @FXML
-    private ComboBox<String > CustomeridCombobox;
-
-    @FXML
-    private TableView<CartTM> OrdersTable;
-
-    @FXML
-    private TableColumn<CartTM, String> productidColumn;
-
-    @FXML
-    private TableColumn<CartTM, Integer> cartQtyColumn;
-
-    @FXML
-    private TableColumn<CartTM, String> nameColumn;
-
-    @FXML
-    private TableColumn<CartTM, Double> totalColumn;
-
-    @FXML
-    private TableColumn<CartTM, Double> unitPricecolumn;
-
-    @FXML
-    private TableColumn<?, ?> actionColumn;
+    private final ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
 
     OrdersBO ordersBO = (OrdersBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ORDERS);
     ProductBO productBO = (ProductBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCT);
     CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
 
-    private final ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValues();
-
         try {
             refreshPage();
         } catch (SQLException | ClassNotFoundException e) {
@@ -160,141 +73,108 @@ public class OrdersController implements Initializable {
         unitPricecolumn.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         totalColumn.setCellValueFactory(new PropertyValueFactory<>("total"));
         actionColumn.setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
-
         OrdersTable.setItems(cartTMS);
     }
 
-    private void refreshPage() throws SQLException,ClassNotFoundException {
+    private void refreshPage() throws SQLException, ClassNotFoundException {
         orderid.setText(ordersBO.generateOrderId());
-        DateTextfield.setValue(LocalDate.parse(LocalDate.now().toString()));
-
+        DateTextfield.setValue(LocalDate.now());
         loadCustomerIds();
-        loadProductId();
+        loadProductIds();
 
         CustomeridCombobox.getSelectionModel().clearSelection();
         ProductidCombobox.getSelectionModel().clearSelection();
         ProductName.setText("");
-        QTYOnHand.setText("");
-        UnitPrice.setText("");
         QTYTextfield.setText("");
+        QTYOnHandTextField.setText("");
+        UnitPrice.setText("");
         CustomerName.setText("");
-
         cartTMS.clear();
         OrdersTable.refresh();
     }
 
-    private void loadProductId() throws SQLException,ClassNotFoundException {
-        ArrayList<String> productIds = productBO.getAllProductIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.addAll(productIds);
-        ProductidCombobox.setItems(observableList);
+    private void loadCustomerIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> customerIds = customerBO.getAllIds();
+        CustomeridCombobox.setItems(FXCollections.observableArrayList(customerIds));
     }
 
-    private void loadCustomerIds() throws SQLException,ClassNotFoundException {
-        ArrayList<String> customerIds = customerBO.getAllIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        observableList.addAll(customerIds);
-        CustomeridCombobox.setItems(observableList);
+    private void loadProductIds() throws SQLException, ClassNotFoundException {
+        ArrayList<String> productIds = productBO.getAllProductIds();
+        ProductidCombobox.setItems(FXCollections.observableArrayList(productIds));
     }
 
     @FXML
-    void CustomeridComboboxOnAction(ActionEvent event) throws SQLException,ClassNotFoundException {
-        String selectedCustomerId = CustomeridCombobox.getSelectionModel().getSelectedItem();
-        CustomerDTO customerDTO = customerBO.searchCustomer(selectedCustomerId);
-
-        if (customerDTO != null) {
-            CustomerName.setText(customerDTO.getName());
+    void CustomeridComboboxOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        String selectedId = CustomeridCombobox.getSelectionModel().getSelectedItem();
+        if (selectedId != null) {
+            CustomerDTO customer = customerBO.searchCustomer(selectedId);
+            if (customer != null) CustomerName.setText(customer.getName());
         }
     }
 
     @FXML
-    void GoToDashboardOnAction(ActionEvent event) throws IOException {
-    AnchorPane load = FXMLLoader.load(getClass().getResource("/View/Dashboard.fxml"));
-    MainAnchorpane.getChildren().clear();
-    MainAnchorpane.getChildren().add(load);
+    void ProductidComboboxOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        String selectedId = ProductidCombobox.getSelectionModel().getSelectedItem();
+        if (selectedId != null) {
+            ProductDTO product = productBO.search(selectedId);
+            if (product != null) {
+                ProductName.setText(product.getName());
+                UnitPrice.setText(String.valueOf(product.getPrice()));
+                QTYOnHandTextField.setText(String.valueOf(product.getQuantity()));
+                QTYTextfield.setText("");
+            }
+        }
     }
 
     @FXML
     void AddToCartOnAction(ActionEvent event) {
         String selectedProductId = ProductidCombobox.getValue();
+        String cartQtyStr = QTYTextfield.getText();
+        String qtyOnHandStr = QTYOnHandTextField.getText();
 
-        if (selectedProductId == null) {
-            new Alert(Alert.AlertType.ERROR, "Please select product..!").show();
+        if (selectedProductId == null || cartQtyStr.isEmpty() || qtyOnHandStr.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Select product and enter quantity!").show();
             return;
         }
 
-        String cartQtyString = QTYTextfield.getText();
+        int cartQty = Integer.parseInt(cartQtyStr);
+        int qtyOnHand = Integer.parseInt(qtyOnHandStr);
 
-        String qtyPattern = "^[0-9]+$";
-
-        if (!cartQtyString.matches(qtyPattern)) {
-            new Alert(Alert.AlertType.ERROR, "Please enter valid quantity..!").show();
+        if (cartQty > qtyOnHand) {
+            new Alert(Alert.AlertType.ERROR, "Not enough stock!").show();
             return;
         }
-
-        String productName = ProductName.getText();
-        int cartQty = Integer.parseInt(cartQtyString);
-        int qtyOnHand = Integer.parseInt(QTYOnHand.getText());
-
-        if (qtyOnHand < cartQty) {
-            new Alert(Alert.AlertType.ERROR, "Not enough products..!").show();
-            return;
-        }
-
-        QTYTextfield.setText("");
 
         double unitPrice = Double.parseDouble(UnitPrice.getText());
-        double total = unitPrice * cartQty;
+        double total = cartQty * unitPrice;
+        String productName = ProductName.getText();
 
         for (CartTM cartTM : cartTMS) {
-
             if (cartTM.getProductId().equals(selectedProductId)) {
-                double newQty = cartTM.getCartQuantity() + cartQty;
-                cartTM.setCartQuantity(newQty);
-                cartTM.setTotal(unitPrice * newQty);
-
+                cartTM.setCartQuantity(cartTM.getCartQuantity() + cartQty);
+                cartTM.setTotal(cartTM.getCartQuantity() * unitPrice);
                 OrdersTable.refresh();
+                QTYTextfield.clear();
                 return;
             }
         }
 
-        String selectedCustomerId = CustomeridCombobox.getValue();
-
-        if (selectedCustomerId == null) {
-            new Alert(Alert.AlertType.ERROR, "Please select Customer..!").show();
-            return;
-        }
-
-
-        Button btn = new Button("Remove");
-        CartTM newCartTM = new CartTM(
-                selectedProductId,
-                productName,
-                cartQty,
-                unitPrice,
-                total,
-                selectedCustomerId,
-                btn
-        );
-
-        btn.setOnAction(actionEvent -> {
-
-            cartTMS.remove(newCartTM);
-
+        Button removeBtn = new Button("Remove");
+        CartTM newCart = new CartTM(selectedProductId, productName, cartQty, unitPrice, total, CustomeridCombobox.getValue(), removeBtn);
+        removeBtn.setOnAction(e -> {
+            cartTMS.remove(newCart);
             OrdersTable.refresh();
         });
 
-        cartTMS.add(newCartTM);
+        cartTMS.add(newCart);
+        OrdersTable.refresh();
+        QTYTextfield.clear();
     }
 
     @FXML
     void PlaceOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        if (OrdersTable.getItems().isEmpty()) {
-            new Alert(Alert.AlertType.ERROR, "Please add products to cart..!").show();
-            return;
-        }
-        if (CustomeridCombobox.getSelectionModel().isEmpty()) {
-            new Alert(Alert.AlertType.ERROR, "Please select customer for place order..!").show();
+        if (cartTMS.isEmpty() || CustomeridCombobox.getValue() == null) {
+            new Alert(Alert.AlertType.ERROR, "Add products and select customer!").show();
             return;
         }
 
@@ -302,54 +182,36 @@ public class OrdersController implements Initializable {
         Date dateOfOrder = Date.valueOf(DateTextfield.getValue());
         String customerId = CustomeridCombobox.getValue();
 
-        ArrayList<OrdersAndProductDetailsDTO> ordersAndProductDetailsDTOS = new ArrayList<>();
-
+        ArrayList<OrdersAndProductDetailsDTO> detailsList = new ArrayList<>();
         for (CartTM cartTM : cartTMS) {
-
-            OrdersAndProductDetailsDTO orderDetailsDTO = new OrdersAndProductDetailsDTO(
+            detailsList.add(new OrdersAndProductDetailsDTO(
+                    orderId,
                     cartTM.getProductId(),
-                    cartTM.getProductname(),
                     cartTM.getCartQuantity(),
-                    cartTM.getUnitPrice(),
-                    cartTM.getTotal(),
-                    cartTM.getCustomerId()
-            );
-
-            ordersAndProductDetailsDTOS.add(orderDetailsDTO);
+                    cartTM.getUnitPrice()
+            ));
         }
 
-        OrdersDTO orderDTO = new OrdersDTO(
-                orderId,
-                customerId,
-                dateOfOrder,
-                ordersAndProductDetailsDTOS
-        );
+        OrdersDTO orderDTO = new OrdersDTO(orderId, customerId, dateOfOrder, detailsList);
 
-        boolean isSaved = ordersBO.saveOrder(orderDTO);
-
-        if (isSaved) {
-            new Alert(Alert.AlertType.INFORMATION, "Order saved..!").show();
+        boolean saved = ordersBO.saveOrder(orderDTO);
+        if (saved) {
+            new Alert(Alert.AlertType.INFORMATION, "Order placed successfully!").show();
             refreshPage();
         } else {
-            new Alert(Alert.AlertType.ERROR, "Order fail..!").show();
+            new Alert(Alert.AlertType.ERROR, "Failed to place order!").show();
         }
     }
 
-    @FXML
-    void ProductidComboboxOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String selectedProductId = ProductidCombobox.getSelectionModel().getSelectedItem();
-        ProductDTO productDTO = productBO.search(selectedProductId);
-
-        if (productDTO != null) {
-            ProductName.setText(productDTO.getName());
-            QTYTextfield.setText(productDTO.getQuantity().toString());
-            UnitPrice.setText(String.valueOf(productDTO.getPrice()));
-        }
-    }
 
     @FXML
     void ResetOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-    refreshPage();
+        refreshPage();
     }
 
+    public void GoToDashboardOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/View/Dashboard.fxml"));
+        MainAnchorpane.getChildren().clear();
+        MainAnchorpane.getChildren().add(load);
+    }
 }

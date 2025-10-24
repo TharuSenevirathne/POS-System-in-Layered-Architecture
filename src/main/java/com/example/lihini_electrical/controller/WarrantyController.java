@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Warranty implements Initializable {
+public class WarrantyController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 

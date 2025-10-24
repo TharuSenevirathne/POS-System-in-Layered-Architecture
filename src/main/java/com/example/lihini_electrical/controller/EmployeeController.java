@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Employee implements Initializable {
+public class EmployeeController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 
@@ -157,7 +157,7 @@ public class Employee implements Initializable {
 
     @FXML
     void EmployeeOnMouseClicked(MouseEvent event) {
-    EmployeeTM employeeTM = EmployeeTable.getSelectionModel().getSelectedItem();
+        EmployeeTM employeeTM = EmployeeTable.getSelectionModel().getSelectedItem();
 
         if (employeeTM != null) {
             empidLabel.setText(employeeTM.getEmployeeId());

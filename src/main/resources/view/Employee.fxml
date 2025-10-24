@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Employee">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.EmployeeController">
    <children>
-      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.9">
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.75">
          <image>
             <Image url="@../assests/istockphoto-1206728259-612x612.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="EmployeeTable" layoutX="97.0" layoutY="401.0" onMouseClicked="#EmployeeOnMouseClicked" prefHeight="142.0" prefWidth="506.0" style="-fx-background-color: #E53935;">
+      <TableView fx:id="EmployeeTable" layoutX="97.0" layoutY="401.0" onMouseClicked="#EmployeeOnMouseClicked" prefHeight="142.0" prefWidth="506.0">
         <columns>
-          <TableColumn fx:id="empidColumn" prefWidth="96.79999542236328" style="-fx-background-color: #E53935;" text="Employee id" />
-          <TableColumn fx:id="nameColumn" prefWidth="100.79998779296875" style="-fx-background-color: #E53935;" text="Name" />
-            <TableColumn fx:id="addressColumn" prefWidth="110.4000244140625" style="-fx-background-color: #E53935;" text="Address" />
-            <TableColumn fx:id="positionColumn" prefWidth="92.0" style="-fx-background-color: #E53935;" text="Position" />
-            <TableColumn fx:id="phoneNoColumn" prefWidth="105.59994506835938" style="-fx-background-color: #E53935;" text="Phone No" />
+          <TableColumn fx:id="empidColumn" prefWidth="96.79999542236328" style="-fx-background-color: white;" text="Employee id" />
+          <TableColumn fx:id="nameColumn" prefWidth="100.79998779296875" style="-fx-background-color: white;" text="Name" />
+            <TableColumn fx:id="addressColumn" prefWidth="110.4000244140625" style="-fx-background-color: white;" text="Address" />
+            <TableColumn fx:id="positionColumn" prefWidth="92.0" style="-fx-background-color: white;" text="Position" />
+            <TableColumn fx:id="phoneNoColumn" prefWidth="105.59994506835938" style="-fx-background-color: white;" text="Phone No" />
         </columns>
       </TableView>
-      <Button fx:id="ResetButton" layoutX="97.0" layoutY="346.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #D32F2F;" text="Reset">
+      <Button fx:id="ResetButton" layoutX="97.0" layoutY="346.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #D32F2F; -fx-border-color: white;" text="Reset" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -32,26 +37,21 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="DeleteButton" layoutX="229.0" layoutY="346.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #D32F2F;" text="Delete">
+      <Button fx:id="DeleteButton" layoutX="229.0" layoutY="346.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #D32F2F; -fx-border-color: white;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="UpdateButton" layoutX="361.0" layoutY="346.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #D32F2F;" text="Update">
+      <Button fx:id="UpdateButton" layoutX="361.0" layoutY="346.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #D32F2F; -fx-border-color: white;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="SaveButton" layoutX="501.0" layoutY="343.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #D32F2F;" text="Save">
+      <Button fx:id="SaveButton" layoutX="501.0" layoutY="343.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #D32F2F; -fx-border-color: white;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="583.0" layoutY="7.0">
-         <image>
-            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
-         </image>
-      </ImageView>
       <Label fx:id="TitleLabel" alignment="CENTER" layoutX="3.0" layoutY="77.0" prefHeight="18.0" prefWidth="692.0" text="Employee !!">
          <font>
             <Font name="Mongolian Baiti" size="36.0" />
@@ -60,7 +60,7 @@
             <Glow level="0.45" />
          </effect>
       </Label>
-      <TextField fx:id="NameTextfield" layoutX="266.0" layoutY="192.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter name here" style="-fx-background-color: #E53935; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="NameTextfield" layoutX="266.0" layoutY="192.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter name here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
       <Label fx:id="PhoneNoLabel" layoutX="120.0" layoutY="300.0" text="Phone No :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
@@ -91,8 +91,8 @@
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="AddressTextfield" layoutX="266.0" layoutY="226.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter address here" style="-fx-background-color: #E53935; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <TextField fx:id="PositionTextfield" layoutX="266.0" layoutY="259.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter job role here" style="-fx-background-color: #E53935; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <TextField fx:id="PhoneNoTextfield" layoutX="266.0" layoutY="294.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter contact no here" style="-fx-background-color: #E53935; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="AddressTextfield" layoutX="266.0" layoutY="226.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter address here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="PositionTextfield" layoutX="266.0" layoutY="259.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter job role here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="PhoneNoTextfield" layoutX="266.0" layoutY="294.0" prefHeight="26.0" prefWidth="338.0" promptText="Enter contact no here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
    </children>
 </AnchorPane>

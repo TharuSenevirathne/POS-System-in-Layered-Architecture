@@ -31,10 +31,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.*;
 
-public class Customer implements Initializable {
+public class CustomerController implements Initializable {
 
     @FXML
     private AnchorPane MainAnchorpane;
@@ -183,14 +182,19 @@ public class Customer implements Initializable {
             ObservableList<CustomerTM> customerTMS = FXCollections.observableArrayList();
 
             for (CustomerDTO customerDTO : customerDTOS) {
-                CustomerTable.getItems().add(new CustomerTM(customerDTO.getCustomerId(),
+                CustomerTM customerTM = new CustomerTM(
+                        customerDTO.getCustomerId(),
                         customerDTO.getName(),
                         customerDTO.getAddress(),
                         customerDTO.getPhoneNo(),
                         customerDTO.getEmail(),
                         customerDTO.getType(),
-                        customerDTO.getEmployeeId()));
+                        customerDTO.getEmployeeId()
+                );
+                customerTMS.add(customerTM);
             }
+            CustomerTable.setItems(customerTMS);
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }catch (ClassNotFoundException e){
@@ -467,7 +471,7 @@ public class Customer implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/SendMail.fxml"));
             Parent load = loader.load();
 
-            SendMail sendMailController = loader.getController();
+            SendMailController sendMailController = loader.getController();
 
             String email = selectedItem.getEmail();
             sendMailController.setCustomerEmail(email);

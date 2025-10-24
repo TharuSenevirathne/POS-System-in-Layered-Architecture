@@ -14,7 +14,7 @@ public class BOFactory {
 
     }
     public enum BOTypes{
-        CUSTOMER,DELIVERY,DEPARTMENT,DISCOUNT,EMPLOYEE,INVENTORY,ORDERS,
+        CUSTOMER,DELIVERY,DEPARTMENT,EMPLOYEE,INVENTORY,ORDERS,
         PAYMENT,PRODUCT,SUPPLIER,VEHICLE,WAREHOUSE,WARRANTY
     }
     public SuperBO getBO(BOTypes boTypes){
@@ -25,8 +25,6 @@ public class BOFactory {
                 return new DeliveryBOImpl();
             case DEPARTMENT:
                 return new DepartmentBOImpl();
-            case DISCOUNT:
-                return new DiscountBOImpl();
             case EMPLOYEE:
                 return new EmployeeBOImpl();
             case INVENTORY:

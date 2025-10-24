@@ -30,8 +30,7 @@ public class Main extends Application {
         loadingTask.setOnSucceeded(event -> {
             Scene value = loadingTask.getValue();
 
-            stage.setTitle("LIHINI ELECTRICAL ( PVT ) LTD");
-         //   stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/Annotation 2024-12-21 214315.png")));
+            stage.setTitle("TS ELECTRICAL ( PVT ) LTD");
             stage.setMaximized(true);
 
             stage.setScene(value);

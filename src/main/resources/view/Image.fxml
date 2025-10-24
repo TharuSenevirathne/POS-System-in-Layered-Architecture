@@ -5,10 +5,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane fx:id="ImageAnchorpane" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Image">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ImageAnchorpane" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.ImageController">
    <children>
-      <Text fx:id="Text2" fill="WHITE" layoutX="-4.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIHINI ELECTRICAL ( PVT ) LTD" textAlignment="CENTER" wrappingWidth="692.5246295928955">
+      <Text fx:id="Text2" fill="WHITE" layoutX="-4.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TS ELECTRICAL ( PVT ) LTD" textAlignment="CENTER" wrappingWidth="692.5246295928955">
          <font>
             <Font name="Mongolian Baiti" size="35.0" />
          </font>

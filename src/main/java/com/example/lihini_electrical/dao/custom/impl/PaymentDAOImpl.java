@@ -2,6 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.PaymentDAO;
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Payment;
 
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select pay_id  from Payment order by pay_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select paymentID  from Payment order by paymentID  desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -38,7 +39,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public boolean delete(String paymentId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Payment where pay_id =?", paymentId);
+        return SQLUtil.execute("delete from Payment where paymentID =?", paymentId);
     }
 
     @Override
@@ -52,20 +53,33 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public boolean update(Payment payment) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Payment set Amount =? ,order_item_name =? ,pay_date =? where pay_id =?",
-                payment.getPaymentID(),
+        return SQLUtil.execute( "update Payment set amount =? , orderItemName =? ,date =? where paymentID =?",
                 payment.getAmount(),
                 payment.getOrderItemName(),
-                payment.getDate()
+                payment.getDate(),
+                payment.getPaymentID()
         );    }
 
     @Override
     public Payment search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Payment where paymentID=?", id);
+        rst.next();
+        return new Payment(
+                rst.getString(1),
+                rst.getDouble(2),
+                rst.getString(3),
+                rst.getDate(4)
+        );
     }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select paymentID  from Payment");
+        ArrayList<String> paymentIds = new ArrayList<>();
+
+        while (rst.next()) {
+            paymentIds.add(rst.getString(1));
+        }
+        return paymentIds;
     }
 }

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Customer">
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.CustomerController">
    <children>
-      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.96">
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.84">
          <image>
             <Image url="@../assests/pexels-photo-6956924.jpeg" />
          </image>
@@ -35,27 +35,27 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="ReportButton" layoutX="89.0" layoutY="357.0" mnemonicParsing="false" onAction="#ReportOnAction" prefHeight="26.0" prefWidth="255.0" style="-fx-background-color: #06081F;" text="All Customer Reports" textFill="WHITE">
+      <Button fx:id="ReportButton" layoutX="89.0" layoutY="357.0" mnemonicParsing="false" onAction="#ReportOnAction" prefHeight="26.0" prefWidth="255.0" style="-fx-background-color: #06081F; -fx-border-color: white;" text="All Customer Reports" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="SaveButton" layoutX="521.0" layoutY="319.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Save" textFill="WHITE">
+      <Button fx:id="SaveButton" layoutX="521.0" layoutY="319.0" mnemonicParsing="false" onAction="#SaveOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F; -fx-border-color: white;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="UpdateButton" layoutX="370.0" layoutY="319.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Update" textFill="WHITE">
+      <Button fx:id="UpdateButton" layoutX="370.0" layoutY="319.0" mnemonicParsing="false" onAction="#UpdateOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F; -fx-border-color: white;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="DeleteButton" layoutX="227.0" layoutY="319.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Delete" textFill="WHITE">
+      <Button fx:id="DeleteButton" layoutX="227.0" layoutY="319.0" mnemonicParsing="false" onAction="#DeleteOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F; -fx-border-color: white;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="ResetButton" layoutX="86.0" layoutY="319.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F;" text="Reset" textFill="WHITE">
+      <Button fx:id="ResetButton" layoutX="86.0" layoutY="319.0" mnemonicParsing="false" onAction="#ResetOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #06081F; -fx-border-color: white;" text="Reset" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -67,7 +67,7 @@
          <effect>
             <Glow level="0.6" />
          </effect></Label>
-      <Button fx:id="SendMailButton" layoutX="359.0" layoutY="357.0" mnemonicParsing="false" onAction="#SendMailOnAction" prefHeight="26.0" prefWidth="255.0" style="-fx-background-color: #06081F;" text="Send Mail" textFill="WHITE">
+      <Button fx:id="SendMailButton" layoutX="359.0" layoutY="357.0" mnemonicParsing="false" onAction="#SendMailOnAction" prefHeight="26.0" prefWidth="255.0" style="-fx-background-color: #06081F; -fx-border-color: white;" text="Send Mail" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -93,20 +93,15 @@
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font></Label>
-      <TextField fx:id="PhoneNoTextfield" layoutX="373.0" layoutY="284.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your contact number here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <TextField fx:id="EmailTextfield" layoutX="371.0" layoutY="225.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your email here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <TextField fx:id="AddressTextfield" layoutX="89.0" layoutY="232.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your address here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <TextField fx:id="TypeTextfield" layoutX="89.0" layoutY="284.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your type = &quot;Delivery&quot; / &quot;NonDelivery&quot;" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="PhoneNoTextfield" layoutX="373.0" layoutY="284.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your contact number here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="EmailTextfield" layoutX="371.0" layoutY="225.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your email here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="AddressTextfield" layoutX="89.0" layoutY="232.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your address here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="TypeTextfield" layoutX="89.0" layoutY="284.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your type = &quot;Delivery&quot; / &quot;NonDelivery&quot;" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
       <Label fx:id="EmailLabel" layoutX="373.0" layoutY="199.0" text="Email : " textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font></Label>
-      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="581.0" layoutY="10.0">
-         <image>
-            <Image url="@../Images/Annotation 2024-12-13 023733.png" />
-         </image>
-      </ImageView>
-      <ComboBox fx:id="EmployeeidComboBox" layoutX="371.0" layoutY="167.0" onAction="#EmployeeidOnAction" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #070824;" />
+      <ComboBox fx:id="EmployeeidComboBox" layoutX="371.0" layoutY="167.0" onAction="#EmployeeidOnAction" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: white;" />
       <Label fx:id="custidLabel" layoutX="236.0" layoutY="142.0" text="C001 " textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
@@ -117,6 +112,6 @@
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="NameTextfield" layoutX="92.0" layoutY="183.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your name here" style="-fx-background-color: #070824; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="NameTextfield" layoutX="92.0" layoutY="183.0" prefHeight="26.0" prefWidth="242.0" promptText="Enter your name here" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
    </children>
 </AnchorPane>

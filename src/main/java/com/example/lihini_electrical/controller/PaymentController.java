@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Payment implements Initializable {
+public class PaymentController implements Initializable {
 
     @FXML
     private AnchorPane MainAnchorpane;

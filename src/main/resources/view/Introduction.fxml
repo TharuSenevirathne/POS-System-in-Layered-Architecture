@@ -2,11 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.Introduction">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.IntroductionController">
    <children>
       <Text fx:id="TitleText" fill="WHITE" layoutX="17.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INTRODUCTION TO MY BUSINESS" textAlignment="CENTER" wrappingWidth="665.3652129173279">
          <font>
@@ -16,7 +16,7 @@
             <Glow level="0.49" />
          </effect>
       </Text>
-      <Text fx:id="Text1" fill="WHITE" layoutX="56.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                               Lihini Electrical (Pvt) Ltd is a trusted provider of high-quality electrical products and services, dedicated to meeting the needs of households, businesses, and industries. Located in Elpitiya , we pride ourselves on delivering exceptional solutions tailored to modern electrical requirements." wrappingWidth="606.4625244140625">
+      <Text fx:id="Text1" fill="WHITE" layoutX="56.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                               TS Electrical (Pvt) Ltd is a trusted provider of high-quality electrical products and services, dedicated to meeting the needs of households, businesses, and industries. Located in Elpitiya , we pride ourselves on delivering exceptional solutions tailored to modern electrical requirements." wrappingWidth="606.4625244140625">
          <font>
             <Font name="Mongolian Baiti" size="16.0" />
          </font>
@@ -26,12 +26,7 @@
             <Font name="Mongolian Baiti" size="16.0" />
          </font>
       </Text>
-      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="577.0" layoutY="14.0">
-         <image>
-            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="Text3" fill="WHITE" layoutX="56.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                             At Lihini Electrical, we are committed to upholding safety, innovation, and sustainability. By consistently maintaining high standards and staying ahead of industry trends, we aim to be the go-to electrical shop in the region, fostering long-lasting relationships with our valued clients." wrappingWidth="606.4625244140625">
+      <Text fx:id="Text3" fill="WHITE" layoutX="56.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                             At TS Electrical, we are committed to upholding safety, innovation, and sustainability. By consistently maintaining high standards and staying ahead of industry trends, we aim to be the go-to electrical shop in the region, fostering long-lasting relationships with our valued clients." wrappingWidth="606.4625244140625">
          <font>
             <Font name="Mongolian Baiti" size="16.0" />
          </font>

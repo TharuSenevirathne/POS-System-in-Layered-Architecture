@@ -5,7 +5,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-public class LoadingScreen {
+public class LoadingScreenController {
     @FXML
     private AnchorPane MainAnchorpane;
 

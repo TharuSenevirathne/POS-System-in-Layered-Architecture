@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class Introduction {
+public class IntroductionController {
     @FXML
     private AnchorPane MainAnchorpane;
 

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Delivery implements Initializable {
+public class DeliveryController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 

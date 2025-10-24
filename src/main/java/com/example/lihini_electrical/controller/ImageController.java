@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class Image {
+public class ImageController {
 
     @FXML
     private AnchorPane ImageAnchorpane;

@@ -12,6 +12,6 @@ public class Product {
     private String productId;
     private String name;
     private double price;
-    private String inventoryId;
     private String quantity;
+    private String inventoryId;
 }

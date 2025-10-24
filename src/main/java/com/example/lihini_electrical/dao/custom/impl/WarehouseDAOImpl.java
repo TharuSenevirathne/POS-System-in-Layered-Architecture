@@ -2,6 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.WarehouseDAO;
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Warehouse;
 
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select ware_id  from Warehouse order by ware_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select  warehouse_id  from Warehouse order by  warehouse_id  desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -41,7 +42,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
 
     @Override
     public boolean delete(String warehouseId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Warehouse where ware_id=?", warehouseId);
+        return SQLUtil.execute("delete from Warehouse where  warehouse_id=?", warehouseId);
     }
 
     @Override
@@ -54,19 +55,31 @@ public class WarehouseDAOImpl implements WarehouseDAO {
 
     @Override
     public boolean update(Warehouse warehouse) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Warehouse set ware_name =? ,ware_location  =? ,where ware_id=?",
-                warehouse.getWarehouseId(),
+        return SQLUtil.execute( "update Warehouse set name =? ,location  =? ,where  warehouse_id=?",
                 warehouse.getName(),
-                warehouse.getLocation()
+                warehouse.getLocation(),
+                warehouse.getWarehouseId()
         );    }
 
     @Override
     public Warehouse search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Warehouse where  warehouse_id=?", id);
+        rst.next();
+        return new Warehouse(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getString(3)
+        );
     }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select  warehouse_id  from Warehouse");
+        ArrayList<String> warehouseIds = new ArrayList<>();
+
+        while (rst.next()) {
+            warehouseIds.add(rst.getString(1));
+        }
+        return warehouseIds;
     }
 }

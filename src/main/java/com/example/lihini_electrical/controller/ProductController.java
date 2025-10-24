@@ -21,11 +21,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Product implements Initializable {
+public class ProductController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 
@@ -217,7 +216,7 @@ public class Product implements Initializable {
         String name = NameTextfield.getText();
         String priceString = PriceTextfield.getText();
         String quantity = QtyTextfield.getText();
-        String inventoryId = InventoryidCombobox.getId();
+        String inventoryId = InventoryidCombobox.getValue();
 
         NameTextfield.setStyle(NameTextfield.getStyle() + ";-fx-border-color: #7367F0;");
         PriceTextfield.setStyle(NameTextfield.getStyle() + ";-fx-border-color: #7367F0;");
@@ -275,7 +274,7 @@ public class Product implements Initializable {
         String name = NameTextfield.getText();
         String priceString = PriceTextfield.getText();
         String quantity = QtyTextfield.getText();
-        String inventoryId = InventoryidCombobox.getId();
+        String inventoryId = InventoryidCombobox.getValue();
 
         NameTextfield.setStyle(NameTextfield.getStyle() + ";-fx-border-color: #7367F0;");
         PriceTextfield.setStyle(NameTextfield.getStyle() + ";-fx-border-color: #7367F0;");

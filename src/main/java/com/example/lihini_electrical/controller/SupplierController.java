@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Supplier implements Initializable {
+public class SupplierController implements Initializable {
 
     @FXML
     private AnchorPane MainAnchorpane;

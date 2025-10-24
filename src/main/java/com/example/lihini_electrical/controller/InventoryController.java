@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Inventory implements Initializable {
+public class InventoryController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 

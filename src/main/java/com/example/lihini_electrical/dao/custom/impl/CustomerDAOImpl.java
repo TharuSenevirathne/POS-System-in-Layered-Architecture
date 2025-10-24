@@ -15,9 +15,14 @@ public class CustomerDAOImpl implements CustomerDAO {
         ArrayList<Customer> customers = new ArrayList<>();
 
         while (rst.next()) {
-            Customer  entity = new Customer(rst.getString(1),rst.getString(2),
-                    rst.getString(3),rst.getString(4),rst.getString(5),
-                    rst.getString(6),rst.getString(7));
+            Customer  entity = new Customer(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getString(5),
+                    rst.getString(6),
+                    rst.getString(7));
             customers.add(entity);
         }
         return customers;
@@ -25,7 +30,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select cust_id from Customer order by cust_id desc limit 1");
+        ResultSet rst = SQLUtil.execute("select customer_id from Customer order by customer_id desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -52,13 +57,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean delete(String customerId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Customer where cust_id=?", customerId);
+        return SQLUtil.execute("delete from Customer where customer_id=?", customerId);
     }
 
     @Override
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Customer set cust_name=? ,cust_address=? ," +
-                        "cust_phoneNo=? ,cust_email=? ,cust_type=? ,emp_id=? where cust_id=?",
+        return SQLUtil.execute( "update Customer set name=? ,address=? ," +
+                        "phone_no=? ,email=? ,type=? , employee_id=? where customer_id=?",
                 entity.getName(),
                 entity.getAddress(),
                 entity.getPhoneNo(),
@@ -72,7 +77,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
 
-        ResultSet rst = SQLUtil.execute("select cust_id  from Customer");
+        ResultSet rst = SQLUtil.execute("select customer_id  from Customer");
         ArrayList<String> customerIds = new ArrayList<>();
 
         while (rst.next()) {
@@ -83,8 +88,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public Customer search(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select * from Customer where cust_id=?", id);
-       rst.next();
+        ResultSet rst = SQLUtil.execute("select * from Customer where customer_id=?", id);
+
+        if (rst.next()) {
             return new Customer(
                     rst.getString(1),
                     rst.getString(2),
@@ -94,5 +100,8 @@ public class CustomerDAOImpl implements CustomerDAO {
                     rst.getString(6),
                     rst.getString(7)
             );
+        }
+        return null;
     }
+
 }

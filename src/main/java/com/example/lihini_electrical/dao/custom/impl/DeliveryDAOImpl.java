@@ -1,5 +1,6 @@
 package com.example.lihini_electrical.dao.custom.impl;
 
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Delivery;
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.DeliveryDAO;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class DeliveryDAOImpl implements DeliveryDAO {
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select deli_id  from Delivery order by deli_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select delivery_id   from Delivery order by delivery_id   desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -41,7 +42,7 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 
     @Override
     public boolean delete(String deliveryId) throws SQLException, ClassNotFoundException {
-         return SQLUtil.execute("delete from Delivery where deli_id=?", deliveryId);
+         return SQLUtil.execute("delete from Delivery where delivery_id =?", deliveryId);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 
     @Override
     public boolean update(Delivery entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("update Delivery set deli_address =? ,deli_date=?,vehi_id =? where deli_id =?",
+        return SQLUtil.execute("update Delivery set address =? , delivery_date=?,vehicle_id =? where delivery_id  =?",
                 entity.getAddress(),
                 entity.getDate(),
                 entity.getVehicleId(),
@@ -66,11 +67,23 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 
     @Override
     public Delivery search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Delivery where delivery_id =?", id);
+        rst.next();
+        return new Delivery(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getDate(3),
+                rst.getString(4)
+        );
     }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
-    }
+        ResultSet rst = SQLUtil.execute("select delivery_id   from Delivery");
+        ArrayList<String> deliveryIds = new ArrayList<>();
+
+        while (rst.next()) {
+            deliveryIds.add(rst.getString(1));
+        }
+        return deliveryIds;    }
 }

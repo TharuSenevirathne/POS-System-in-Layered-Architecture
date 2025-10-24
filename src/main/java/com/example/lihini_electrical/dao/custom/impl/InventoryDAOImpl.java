@@ -24,7 +24,7 @@ public class InventoryDAOImpl implements InventoryDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select in_id  from Inventory order by in_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select inventory_id   from Inventory order by inventory_id   desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -38,7 +38,7 @@ public class InventoryDAOImpl implements InventoryDAO {
 
     @Override
     public boolean delete(String inventoryId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Inventory where in_id =?", inventoryId);
+        return SQLUtil.execute("delete from Inventory where inventory_id  =?", inventoryId);
     }
 
     @Override
@@ -52,16 +52,22 @@ public class InventoryDAOImpl implements InventoryDAO {
 
     @Override
     public boolean update(Inventory inventory) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Inventory set in_type =? ,stock_level =? where in_id=?",
-                inventory.getInventoryId(),
+        return SQLUtil.execute( "update Inventory set type =? ,stock_level =? where inventory_id=?",
                 inventory.getType(),
-                inventory.getStocklevel()
+                inventory.getStocklevel(),
+                inventory.getInventoryId()
         );
     }
 
     @Override
     public Inventory search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Inventory where inventory_id =?", id);
+        rst.next();
+        return new Inventory(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getString(3)
+        );
     }
 
     @Override
@@ -70,7 +76,7 @@ public class InventoryDAOImpl implements InventoryDAO {
         ArrayList<String> inventories = new ArrayList<>();
 
         while (rst.next()) {
-            inventories.add(rst.getString("in_id"));
+            inventories.add(rst.getString("inventory_id"));
         }
         return inventories;
     }

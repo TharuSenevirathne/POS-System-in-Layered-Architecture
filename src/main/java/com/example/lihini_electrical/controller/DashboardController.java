@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class Dashboard {
+public class DashboardController {
     @FXML
     private AnchorPane MainAnchorpane;
 
@@ -76,13 +76,6 @@ public class Dashboard {
     @FXML
     void DepartmentOnAction(ActionEvent event) throws IOException {
     AnchorPane load = FXMLLoader.load(getClass().getResource("/View/Department.fxml"));
-    MainAnchorpane.getChildren().clear();
-    MainAnchorpane.getChildren().add(load);
-    }
-
-    @FXML
-    void DiscountOnAction(ActionEvent event) throws IOException {
-    AnchorPane load = FXMLLoader.load(getClass().getResource("/View/Discount.fxml"));
     MainAnchorpane.getChildren().clear();
     MainAnchorpane.getChildren().add(load);
     }

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Vehicle implements Initializable {
+public class VehicleController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 

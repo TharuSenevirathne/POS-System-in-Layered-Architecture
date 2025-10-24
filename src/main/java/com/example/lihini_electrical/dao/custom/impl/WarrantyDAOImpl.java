@@ -2,6 +2,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.WarrantyDAO;
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Warranty;
 
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class WarrantyDAOImpl implements WarrantyDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select war_id  from Warranty order by war_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select  warranty_id  from Warranty order by  warranty_id  desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -40,7 +41,7 @@ public class WarrantyDAOImpl implements WarrantyDAO {
 
     @Override
     public boolean delete(String warrantyId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Warranty where war_id=?", warrantyId);
+        return SQLUtil.execute("delete from Warranty where  warranty_id=?", warrantyId);
     }
 
     @Override
@@ -55,22 +56,34 @@ public class WarrantyDAOImpl implements WarrantyDAO {
 
     @Override
     public boolean update(Warranty warrantyDTO) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Warranty set product_name =? ,warranty_period_time =? ," +
-                        "warranty_Starting_Date =? where war_id =?",
-                warrantyDTO.getWarrantyId(),
+        return SQLUtil.execute( "update Warranty set  product_name =? , warranty_period_time =? ," +
+                        "warranty_start_date =? where  warranty_id =?",
                 warrantyDTO.getProductName(),
                 warrantyDTO.getWarrantyPeriodTime(),
-                warrantyDTO.getWarrantyStartDate()
+                warrantyDTO.getWarrantyStartDate(),
+                warrantyDTO.getWarrantyId()
         );
     }
 
     @Override
     public Warranty search(String id) throws SQLException, ClassNotFoundException {
-        return null;
-    }
+        ResultSet rst = SQLUtil.execute("select * from Warranty where  warranty_id=?", id);
+        rst.next();
+        return new Warranty(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getString(3),
+                rst.getDate(4)
+        );    }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select  warranty_id  from Warranty");
+        ArrayList<String> warrantyIds = new ArrayList<>();
+
+        while (rst.next()) {
+            warrantyIds.add(rst.getString(1));
+        }
+        return warrantyIds;
     }
 }

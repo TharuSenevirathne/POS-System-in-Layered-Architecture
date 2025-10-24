@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
 <AnchorPane fx:id="MainAnchorpane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lihini_electrical.controller.OrdersController">
    <children>
-      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.82">
+      <ImageView fx:id="MainImageview" fitHeight="600.0" fitWidth="700.0" opacity="0.71">
          <image>
             <Image url="@../assests/istockphoto-1091892722-612x612.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="LogoImageview" fitHeight="79.0" fitWidth="109.0" layoutX="577.0" layoutY="14.0">
-         <image>
-            <Image url="@../assests/Annotation 2024-12-13 023733.png" />
          </image>
       </ImageView>
       <Button fx:id="GoToDashboardButton" layoutX="572.0" layoutY="563.0" mnemonicParsing="false" onAction="#GoToDashboardOnAction" style="-fx-background-color: lime;" text="Go To Dashboard">
@@ -28,17 +30,17 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="OrdersTable" layoutX="66.0" layoutY="417.0" opacity="0.91" prefHeight="134.0" prefWidth="562.0" style="-fx-background-color: orange;">
+      <TableView fx:id="OrdersTable" layoutX="66.0" layoutY="417.0" opacity="0.91" prefHeight="134.0" prefWidth="562.0">
          <columns>
-            <TableColumn fx:id="productidColumn" prefWidth="76.80001068115234" style="-fx-background-color: orange;" text="Product id" />
-            <TableColumn fx:id="nameColumn" prefWidth="90.39996337890625" style="-fx-background-color: orange;" text="Name" />
-            <TableColumn fx:id="cartQtyColumn" prefWidth="92.0" style="-fx-background-color: orange;" text="Cart Qty" />
-            <TableColumn fx:id="unitPricecolumn" prefWidth="100.0" style="-fx-background-color: orange;" text="Unit Price" />
-            <TableColumn fx:id="totalColumn" prefWidth="97.60006713867188" style="-fx-background-color: orange;" text="Total" />
-            <TableColumn fx:id="actionColumn" prefWidth="108.79998779296875" style="-fx-background-color: orange;" text="Action" />
+            <TableColumn fx:id="productidColumn" prefWidth="76.80001068115234" text="Product id" />
+            <TableColumn fx:id="nameColumn" prefWidth="90.39996337890625" text="Name" />
+            <TableColumn fx:id="cartQtyColumn" prefWidth="92.0" text="Cart Qty" />
+            <TableColumn fx:id="unitPricecolumn" prefWidth="100.0" text="Unit Price" />
+            <TableColumn fx:id="totalColumn" prefWidth="97.60006713867188" text="Total" />
+            <TableColumn fx:id="actionColumn" prefWidth="108.79998779296875" text="Action" />
          </columns>
       </TableView>
-      <Label fx:id="TiTleLabel" alignment="CENTER" layoutX="41.0" layoutY="40.0" prefHeight="39.0" prefWidth="586.0" text="Orders !!">
+      <Label fx:id="TiTleLabel" alignment="CENTER" layoutX="62.0" layoutY="57.0" prefHeight="39.0" prefWidth="586.0" text="Orders !!">
          <font>
             <Font name="Mongolian Baiti" size="35.0" />
          </font>
@@ -51,12 +53,12 @@
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="CustomeridLabel" layoutX="68.0" layoutY="190.0" text="Customer id :">
+      <Label fx:id="CustomeridLabel" layoutX="67.0" layoutY="199.0" text="Customer id :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="QTYOnHandLabel" layoutX="67.0" layoutY="248.0" text="QTY On Hand : ">
+      <Label fx:id="QTYOnHandLabel" layoutX="57.0" layoutY="270.0" text="QTY On Hand : ">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
@@ -66,19 +68,19 @@
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="DateLabel" layoutX="372.0" layoutY="162.0" text="Date : ">
+      <Label fx:id="DateLabel" layoutX="376.0" layoutY="150.0" text="Date : ">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <ComboBox fx:id="CustomeridCombobox" layoutX="180.0" layoutY="186.0" onAction="#CustomeridComboboxOnAction" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: orange;" />
-      <TextField fx:id="QTYTextfield" layoutX="478.0" layoutY="269.0" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: orange; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <Label fx:id="CustomerNameLabel" layoutX="370.0" layoutY="199.0" text="Customer Name :">
+      <ComboBox fx:id="CustomeridCombobox" layoutX="175.0" layoutY="195.0" onAction="#CustomeridComboboxOnAction" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: white;" />
+      <TextField fx:id="QTYTextfield" layoutX="480.0" layoutY="266.0" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: white; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="CustomerNameLabel" layoutX="64.0" layoutY="235.0" text="Customer Name :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="CustomerName" layoutX="501.0" layoutY="199.0" text="nimal">
+      <Label fx:id="CustomerName" layoutX="192.0" layoutY="235.0" text="nimal">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
@@ -88,39 +90,34 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <DatePicker fx:id="DateTextfield" layoutX="454.0" layoutY="159.0" prefHeight="26.0" prefWidth="175.0" />
-      <Label fx:id="ProductIdLabel" layoutX="66.0" layoutY="222.0" text="Product id :">
+      <DatePicker fx:id="DateTextfield" layoutX="480.0" layoutY="149.0" prefHeight="26.0" prefWidth="151.0" />
+      <Label fx:id="ProductIdLabel" layoutX="374.0" layoutY="199.0" text="Product id :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="ProductNameLabel" layoutX="375.0" layoutY="231.0" text="Product Name :">
+      <Label fx:id="ProductNameLabel" layoutX="375.0" layoutY="235.0" text="Product Name :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="ProductName" layoutX="502.0" layoutY="235.0" text="Wire">
+      <Label fx:id="ProductName" layoutX="486.0" layoutY="236.0" text="Wire">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <ComboBox fx:id="ProductidCombobox" layoutX="180.0" layoutY="218.0" onAction="#ProductidComboboxOnAction" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: orange;" />
-      <Label fx:id="QTYOnHand" layoutX="181.0" layoutY="248.0" prefHeight="18.0" prefWidth="37.0" text="0">
+      <ComboBox fx:id="ProductidCombobox" layoutX="480.0" layoutY="195.0" onAction="#ProductidComboboxOnAction" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: white;" />
+      <Label fx:id="QTYLabel" layoutX="375.0" layoutY="270.0" text="Qty :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="QTYLabel" layoutX="372.0" layoutY="270.0" text="Qty :">
+      <Label fx:id="UnitPriceLabel" layoutX="376.0" layoutY="300.0" text="Unit price :">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="UnitPriceLabel" layoutX="68.0" layoutY="275.0" text="Unit price :">
-         <font>
-            <Font name="Bell MT Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="UnitPrice" layoutX="179.0" layoutY="273.0" text="0.00">
+      <Label fx:id="UnitPrice" layoutX="489.0" layoutY="300.0" text="0.00">
          <font>
             <Font name="Bell MT Bold" size="15.0" />
          </font>
@@ -130,5 +127,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <TextField fx:id="QTYOnHandTextField" layoutX="175.0" layoutY="267.0" prefHeight="26.0" prefWidth="175.0" />
    </children>
 </AnchorPane>

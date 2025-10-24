@@ -3,6 +3,7 @@ package com.example.lihini_electrical.dao.custom.impl;
 import com.example.lihini_electrical.dao.CrudDAO;
 import com.example.lihini_electrical.dao.SQLUtil;
 import com.example.lihini_electrical.dao.custom.SupplierDAO;
+import com.example.lihini_electrical.entity.Customer;
 import com.example.lihini_electrical.entity.Supplier;
 
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select sup_id  from Supplier order by sup_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select supplier_id  from Supplier order by supplier_id  desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -48,26 +49,38 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
     public boolean update(Supplier supplier) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Supplier set sup_name =? ,brand=? ,sup_phoneNo =? where sup_id=?",
-                supplier.getSupplierId(),
+        return SQLUtil.execute( "update Supplier set name =? ,brand=? ,phone_no =? where supplier_id=?",
                 supplier.getName(),
                 supplier.getBrand(),
-                supplier.getPhoneNo()
+                supplier.getPhoneNo(),
+                supplier.getSupplierId()
         );    }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Supplier where sup_id=?", id);
+        return SQLUtil.execute("delete from Supplier where supplier_id=?", id);
     }
 
     @Override
     public Supplier search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Supplier where supplier_id=?", id);
+        rst.next();
+        return new Supplier(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getString(3),
+                rst.getString(4)
+        );
     }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        return null;
-    }
+        ResultSet rst = SQLUtil.execute("select supplier_id  from Supplier");
+        ArrayList<String> supplierIds = new ArrayList<>();
+
+        while (rst.next()) {
+            supplierIds.add(rst.getString(1));
+        }
+        return supplierIds;    }
 
 }

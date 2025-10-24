@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Warehouse implements Initializable {
+public class WarehouseController implements Initializable {
     @FXML
     private AnchorPane MainAnchorpane;
 

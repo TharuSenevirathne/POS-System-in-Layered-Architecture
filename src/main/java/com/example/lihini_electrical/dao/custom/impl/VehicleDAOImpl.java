@@ -23,7 +23,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select vehi_id from Vehicle order by vehi_id desc limit 1");
+        ResultSet rst = SQLUtil.execute("select  vehicle_id from Vehicle order by  vehicle_id desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -44,20 +44,20 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public boolean update(Vehicle vehicle) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Vehicle set vehi_type  =? where vehi_id =?",
-                vehicle.getVehicleId(),
-                vehicle.getType()
+        return SQLUtil.execute( "update Vehicle set type  =? where  vehicle_id =?",
+                vehicle.getType(),
+                vehicle.getVehicleId()
         );
     }
 
     @Override
     public boolean delete(String vehicleId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Vehicle where vehi_id =?", vehicleId);
+        return SQLUtil.execute("delete from Vehicle where  vehicle_id =?", vehicleId);
     }
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select vehi_id from Vehicle");
+        ResultSet rst = SQLUtil.execute("select  vehicle_id from Vehicle");
 
         ArrayList<String> vehicleIds = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public Vehicle search(String selectedVehicleId) throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select * from Vehicle where vehi_id=?", selectedVehicleId);
+        ResultSet rst = SQLUtil.execute("select * from Vehicle where  vehicle_id=?", selectedVehicleId);
         rst.next();
         return new Vehicle(selectedVehicleId, rst.getString("type"));
 

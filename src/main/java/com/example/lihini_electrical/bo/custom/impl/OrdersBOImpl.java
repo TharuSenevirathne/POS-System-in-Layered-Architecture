@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrdersBOImpl implements OrdersBO {
+
     OrdersDAO ordersDAO = (OrdersDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERS);
 
     @Override
@@ -19,34 +20,21 @@ public class OrdersBOImpl implements OrdersBO {
         return ordersDAO.getAllIds();
     }
 
-
-
     @Override
     public String generateOrderId() throws SQLException, ClassNotFoundException {
         return ordersDAO.generateId();
     }
 
-    @Override
     public boolean saveOrder(OrdersDTO orderDTO) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getDbConnection().getConnection();
-        try {
-            connection.setAutoCommit(false);
+        boolean orderSaved = ordersDAO.save(new Orders(
+                orderDTO.getOrderId(),
+                orderDTO.getCustomerId(),
+                orderDTO.getDate()
+        ));
 
-            boolean isOrderSaved = ordersDAO.save(new Orders(orderDTO.getOrderId(),orderDTO.getCustomerId(),orderDTO.getDate()));
-            if (isOrderSaved) {
-                boolean isOrderDetailListSaved = ordersDAO.save(orderDTO.getOrderDetailsDTOS());
-                if (isOrderDetailListSaved) {
-                    connection.commit();
-                    return true;
-                }
-            }
-            connection.rollback();
-            return false;
-        } catch (Exception e) {
-            connection.rollback();
-            return false;
-        } finally {
-            connection.setAutoCommit(true);
-        }
+        if (!orderSaved) return false;
+
+        return ordersDAO.saveOrderDetails(orderDTO.getOrderDetailsDTOS());
     }
+
 }

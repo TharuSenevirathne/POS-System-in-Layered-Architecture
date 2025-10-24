@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Department implements Initializable {
+public class DepartmentController implements Initializable {
 
     @FXML
     private AnchorPane MainAnchorpane;

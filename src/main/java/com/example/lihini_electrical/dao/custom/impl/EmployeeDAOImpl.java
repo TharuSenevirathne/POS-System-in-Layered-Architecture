@@ -25,7 +25,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select emp_id  from Employee order by emp_id  desc limit 1");
+        ResultSet rst = SQLUtil.execute("select employee_id   from Employee order by employee_id   desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -39,7 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public boolean delete(String employeeId) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("delete from Employee where emp_id=?", employeeId);
+        return SQLUtil.execute("delete from Employee where employee_id =?", employeeId);
     }
 
     @Override
@@ -55,24 +55,37 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public boolean update(Employee employee) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute( "update Employee set emp_name =? ,emp_address=? ," +
-                        "emp_position=? ,emp_phoneNo =?  where emp_id=?",
-                employee.getEmployeeId(),
+        return SQLUtil.execute( "update Employee set name =? ,address=? ," +
+                        "position=? ,phone_number =?  where employee_id =?",
                 employee.getName(),
                 employee.getAddress(),
                 employee.getPosition(),
-                employee.getPhoneNumber()
+                employee.getPhoneNumber(),
+                employee.getEmployeeId()
         );
     }
 
     @Override
     public Employee search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("select * from Employee where employee_id =?", id);
+        if (rst.next()) {
+            return new Employee(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getString(5)
+            );
+        } else {
+            return null; // No employee found for this ID
+        }
     }
+
+
 
     @Override
     public ArrayList<String> getAllIds() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("select emp_id  from Employee");
+        ResultSet rst = SQLUtil.execute("select employee_id   from Employee");
         ArrayList<String> customerIds = new ArrayList<>();
 
         while (rst.next()) {
